@@ -1,0 +1,152 @@
+@import '/src/app/shared/styles/variables';
+
+.oferta {
+  &__wrapper {
+    width: 100%;
+
+  }
+
+  &__container {
+    width: 100%;
+    max-width: 1000px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin: 0 auto;
+  }
+
+  &__title {
+    margin: 0 auto;
+    max-width: 550px;
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+
+    h2 {
+      font-size: 42px;
+      line-height: 1.2em;
+      color: #252525;
+      font-weight: bold;
+      text-align: center;
+      position: relative;
+      padding-top: 10px;
+      display: inline-block;
+
+
+    }
+
+    ::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      border-radius: 10px;
+      width: 100%;
+      height: 5px;
+      background: $base-color;
+    }
+  }
+}
+
+
+
+
+
+.oferta__content {
+  margin-top: 40px;
+  margin-bottom: 120px;
+
+  p {
+    font-size: 18px;
+    line-height: 1.5em;
+    color: #5A5A5A;
+  }
+
+  h2 {
+    font-size: 42px;
+    line-height: 1.2em;
+    color: #252525;
+    font-weight: bold;
+    text-align: center;
+    position: relative;
+    padding-top: 10px;
+    display: inline-block;
+    margin-bottom: 20px;
+  }
+}
+
+.oferta__text {
+  font-size: 18px;
+  line-height: 1.5em;
+  color: #5A5A5A;
+
+
+
+
+}
+
+.oferta__link {
+  text-decoration: none;
+  position: relative;
+  font-weight: bold;
+  color: $base-color;
+  cursor: pointer;
+  transition: all 0.35s ease-out;
+
+
+}
+
+.oferta__link::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: auto;
+  right: 0;
+  height: 2px;
+  width: 0;
+  background: $base-color;
+  transition: all 0.35s ease-out;
+
+}
+
+.oferta__link:hover::before {
+  width: 100%;
+}
+
+
+.oferta__subtitle {
+  font-weight: bold;
+  color: #252525;
+  font-size: 18px;
+  line-height: 1.5em;
+  margin-top: 30px;
+}
+
+@media screen and (max-width: 1050px) {
+  .oferta__container {
+    max-width: 700px;
+  }
+}
+
+@media screen and (max-width: 775px) {
+  .oferta__container {
+    max-width: 500px;
+    padding: 0 20px;
+  }
+
+  .oferta__title {
+    margin-top: 30px;
+
+    h2 {
+      font-size: 30px;
+    }
+  }
+
+  .oferta__content {
+    margin-top: 20px;
+
+    h2 {
+      text-align: center;
+      font-size: 26px;
+    }
+  }
+}

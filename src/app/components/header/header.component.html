@@ -1,0 +1,93 @@
+<header class="header">
+  <div class="header__wrapper">
+    <a [routerLink]="[ '/home' ]" routerLinkActive="" class="header__logo"> 
+      <img  src="https://monosushi.com.ua/wp-content/uploads/2021/06/logo.svg" alt="" class="header__logo-img">
+      <img  src="https://monosushi.com.ua/wp-content/uploads/2021/08/logo-mobile.svg" alt="" class="mobile__logo">
+    </a>
+    <div class="header__nav-wrapper">
+      <nav class="header__menu">
+        <ul class="header__menu-list">
+          <li class="header__menu-item">
+            <a [routerLink]="[ '/discount' ]" routerLinkActive="active" class="header__menu-link">
+              <div class="header__menu-link-wrapper">
+                <img class="header__menu-item-image"
+                  src="https://monosushi.com.ua/wp-content/uploads/2020/10/nav-img-gift.svg" alt="">
+                <span class="header__menu-item-title">Акції</span>
+              </div>
+            </a>
+          </li>
+          <li class="header__menu-item">
+            <a [routerLink]="[ '/roli' ]" routerLinkActive="active" class="header__menu-link">
+              <div class="header__menu-link-wrapper">
+                <img class="header__menu-item-image"
+                  src="https://monosushi.com.ua/wp-content/uploads/2020/10/nav-img-rolls.svg" alt="">
+                <span class="header__menu-item-title">Роли</span>
+              </div>
+            </a>
+          </li>
+          <li class="header__menu-item">
+            <a [routerLink]="[ '/setu' ]" routerLinkActive="active" class="header__menu-link">
+              <div class="header__menu-link-wrapper">
+                <img class="header__menu-item-image"
+                  src="https://monosushi.com.ua/wp-content/uploads/2020/10/nav-img-sets.svg" alt="">
+                <span class="header__menu-item-title">Сети</span>
+              </div>
+            </a>
+          </li>
+          <li class="header__menu-item">
+            <a [routerLink]="[ '/drinks' ]" routerLinkActive="active" class="header__menu-link">
+              <div class="header__menu-link-wrapper">
+                <img class="header__menu-item-image"
+                  src="https://monosushi.com.ua/wp-content/uploads/2020/10/nav-img-drinks.svg" alt="">
+                <span class="header__menu-item-title">Напої</span>
+              </div>
+            </a>
+          </li>
+          <li class="header__menu-item">
+            <a [routerLink]="[ '/sous' ]" routerLinkActive="active" class="header__menu-link">
+              <div class="header__menu-link-wrapper">
+                <img class="header__menu-item-image" src="https://monosushi.com.ua/wp-content/uploads/2021/09/icon.svg"
+                  alt="">
+                <span class="header__menu-item-title">Соуси</span>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div class="header__burger-menu">
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/1024px-Hamburger_icon.svg.png"
+        alt="">
+    </div>
+    <div class="header__call-back">
+      <button class="header__call-btn">
+        <img src="https://monosushi.com.ua/wp-content/uploads/2020/10/phone.svg" alt="" class="header__call-btn-icon">
+        <span>МИ ЗАТЕЛЕФОНУЄМО</span>
+      </button>
+    </div>
+    <div class="header__info">
+      <a class="header__phone" href="tel:+380681399731">(097) 878 08 37</a>
+      <div class="header__work-time">
+        Працюємо з <b>11:00</b> до <b>22:30</b>
+      </div>
+    </div>
+    <div class="header__admin">
+      <img src="https://monosushi.com.ua/wp-content/themes/monosushi/img/user.svg" alt="">
+    </div>
+    <div class="header__basket">
+      <div class="header__basket-wrapper">
+
+        <img src="https://monosushi.com.ua/wp-content/themes/monosushi/img/basket.svg" alt="">
+        <span class="header__count-item">0</span>
+        <div class="header__basket-price">
+          <b>0</b>
+          <span>грн</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+</header>

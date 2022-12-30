@@ -98,10 +98,15 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "src/app/shared/scripts/header.js"
+            ]
           }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "a731a639-d9c5-40f6-bf81-3fcfb3d5e4d5"
   }
 }

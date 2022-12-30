@@ -1,0 +1,158 @@
+@import '/src/app/shared/styles/variables';
+
+.discount-info {}
+
+.discount-info__container {
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 0 30px;
+}
+
+.discount-info__menu-list {
+  margin-top: 25px;
+  display: flex;
+  align-items: center;
+
+  li {
+    a {
+      text-transform: capitalize;
+      text-decoration: none;
+      font-size: 12px;
+      line-height: 13px;
+      color: #5A5A5A;
+    }
+  }
+
+  li+li {
+    margin-left: 30px;
+    position: relative;
+  }
+
+  li+li::before {
+    content: "";
+    position: absolute;
+    top: 8px;
+    left: -16px;
+    width: 4px;
+    height: 4px;
+    background-color: #5A5A5A;
+    border-radius: 50%;
+  }
+}
+
+.discount-info__content {
+  width: 60%;
+  margin: 40px auto;
+
+}
+
+.discount-info__banner {
+  width: 100%;
+  min-height: 180px;
+  background-color: $base-color;
+  background-image: url(https://monosushi.com.ua/wp-content/themes/monosushi/img/bg-monosushi-logo.svg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  padding: 20px;
+
+  h2 {
+    color: #252525;
+    font-weight: bold;
+    font-size: 42px;
+    line-height: 1.2em;
+    position: relative;
+    text-align: center;
+  }
+
+  h2::before {
+    content: "";
+    position: absolute;
+    top: -8px;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background-color: #252525;
+    border-radius: 10px;
+  }
+}
+
+
+
+.discount-info__content-list {
+  margin-top: 60px;
+
+  li {
+    margin-left: 20px;
+    position: relative;
+    font-size: 18px;
+    line-height: 1.47em;
+    padding-left: 24px;
+    color: #5A5A5A;
+
+  }
+
+  li+li {
+    margin-top: 8px;
+  }
+
+  li::before,
+  li::after {
+    content: "";
+    position: absolute;
+
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+
+  li::before {
+    border: 1px solid $base-color;
+    width: 13px;
+    height: 13px;
+    top: 7px;
+    left: 0;
+  }
+
+  li::after {
+    background-color: $base-color;
+    width: 5px;
+    height: 5px;
+    top: 11px;
+    left: 4px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+
+  .discount-info__container {
+    padding: 0 30px;
+  }
+
+  .discount-info__menu-list {
+    display: none;
+  }
+
+  .discount-info__content {
+    width: 95%;
+    margin: 40px auto;
+
+  }
+
+  .discount-info__content-list li {
+    font-size: 16px;
+  }
+}
+
+
+@media screen and (max-width: 500px) {
+  .discount-info__container {
+    padding: 0 20px;
+  }
+
+  .discount-info__banner h2 {
+    font-size: 32px;
+  }
+
+}

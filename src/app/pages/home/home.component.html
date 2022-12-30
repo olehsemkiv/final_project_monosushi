@@ -1,0 +1,78 @@
+<div class="home__container">
+  <div class="wrapper__home">
+
+    <div class="swiper-wrapper">
+      <swiper [loop]="true" [config]="swiperConfig" [slidesPerView]="2" [spaceBetween]="20" [navigation]="true"
+        [pagination]="{ clickable: true }" [scrollbar]="{ draggable: true }" [autoplay]="true">
+        <ng-template swiperSlide>
+          <div class="discount-item">
+            <img src="https://monosushi.com.ua/wp-content/uploads/2022/12/den-narodzhennya-.jpg" alt="">
+          </div>
+        </ng-template>
+        <ng-template swiperSlide>
+          <div class="discount-item">
+            <img src="https://monosushi.com.ua/wp-content/uploads/2022/12/den-narodzhennya-.jpg" alt="">
+          </div>
+        </ng-template>
+        <ng-template swiperSlide>
+          <div class="discount-item">
+            <img src="https://monosushi.com.ua/wp-content/uploads/2022/12/den-narodzhennya-.jpg" alt="">
+          </div>
+        </ng-template>
+        <ng-template swiperSlide>
+          <div class="discount-item">
+            <img src="https://monosushi.com.ua/wp-content/uploads/2022/12/den-narodzhennya-.jpg" alt="">
+          </div>
+        </ng-template>
+        <ng-template swiperSlide>
+          <div class="discount-item">
+            <img src="https://monosushi.com.ua/wp-content/uploads/2022/12/den-narodzhennya-.jpg" alt="">
+          </div>
+        </ng-template>
+        <ng-template swiperSlide>
+          <div class="discount-item">
+            <img src="https://monosushi.com.ua/wp-content/uploads/2022/12/den-narodzhennya-.jpg" alt="">
+          </div>
+        </ng-template>
+      </swiper>
+    </div>
+
+
+
+
+  </div>
+
+  <div class="home__info">
+    <div class="home__info-container">
+      <div class="home__info-item">
+        <div class="home__info-item-wrapper">
+          <div class="home__info-item-img">
+            <img src="https://monosushi.com.ua/wp-content/uploads/2020/10/mn-delivery-img.svg" alt="">
+          </div>
+          <a class="home__btn" [routerLink]="[ '/delivery-and-payment' ]" routerLinkActive="active">зони доставки</a>
+
+        </div>
+      </div>
+      <div class="home__info-item mod">
+        <div class="home__info-item-wrapper">
+          <div class="home__info-item-img">
+            <img src="https://monosushi.com.ua/wp-content/uploads/2020/10/mono-supermen.svg" alt="">
+          </div>
+          <div class="home__text">
+            Середній час доставки в <br> зеленій зоні <b>00:43:00</b>
+          </div>
+        </div>
+      </div>
+      <div class="home__info-item">
+        <div class="home__info-item-wrapper">
+          <div class="home__info-item-img">
+            <img src="https://monosushi.com.ua/wp-content/uploads/2020/10/mono-bonus.svg" alt="">
+          </div>
+          <div class="home__text">
+            Наш графік роботи <br> Працюємо з <b>11:00</b> до <b>22:30</b>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
