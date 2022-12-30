@@ -401,6 +401,9 @@
   .header__nav-wrapper {
     display: none;
   }
+  .header__wrapper {
+    
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -426,13 +429,15 @@
       width: 25px;
     }
   }
-  .header__logo{
+
+  .header__logo {
     padding: 0 10px;
   }
+
   .header__count-item {
     top: -9px;
     left: 13px;
-   
+
     min-width: 22px;
     max-width: 36px;
     height: 24px;
