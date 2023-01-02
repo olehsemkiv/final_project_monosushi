@@ -15,7 +15,7 @@ export class AdminDiscountComponent implements OnInit {
   public discountAdmin: Array<discountElementResponse> = [];
   public newTitle = '';
   public newDescription = '';
-  public newImagePath = '';
+  public newImagePath = 'https://monosushi.com.ua/wp-content/uploads/2022/07/imgonline-com-ua-compressed-ryna9n84oqh1-scaled-697x379.jpg';
   public editStatus = false;
   public editID!: number;
 
@@ -44,20 +44,20 @@ export class AdminDiscountComponent implements OnInit {
     })
   }
 
-  deleteItem(post: discountElementResponse): void {
+  deleteItem(discount: discountElementResponse): void {
     if (confirm('Delete ?')) {
-      this.discountService.delete(post.id).subscribe(data => {
+      this.discountService.delete(discount.id).subscribe(data => {
         this.getData();
       })
     }
   }
 
-  editItem(post: discountElementResponse): void {
-    this.editID = post.id;
+  editItem(discount: discountElementResponse): void {
+    this.editID = discount.id;
     this.editStatus = true;
-    this.newTitle = post.title;
-    this.newDescription = post.description;
-    this.newImagePath = post.imagePath;
+    this.newTitle = discount.title;
+    this.newDescription = discount.description;
+    this.newImagePath = discount.imagePath;
   }
 
 

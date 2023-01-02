@@ -1,1 +1,52 @@
-<p>admin-category works!</p>
+<div class="w-100 mt-2">
+  <div class="col-12">
+    <form>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Name</label>
+        <input [(ngModel)]="newTitle" name="newTitle" type="text" class="form-control">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">path</label>
+        <input [(ngModel)]="newPath" name="newPath" type="text" class="form-control">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Image</label>
+        <input [(ngModel)]="newImagePath" name="newImagePath" type="text" class="form-control">
+      </div>
+
+      <button [disabled]="!newTitle || !newPath || !newImagePath" (click)="addItem()" *ngIf="!editStatus" type="button"
+        class="btn btn-success">Add</button>
+      <button [disabled]="!newTitle || !newPath || !newImagePath" (click)="updateItem()" *ngIf="editStatus"
+        type="button" class="btn btn-primary">Save</button>
+    </form>
+  </div>
+  <div class="col-12 mt-5 mb-5">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Title</th>
+          <th scope="col">Description</th>
+          <th scope="col">Image</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let category of categoriesAdmin; index as i">
+          <th scope="row">{{i+1}}</th>
+          <td>{{category.name}}</td>
+          <td>{{category.path}}</td>
+          <td>
+            <img  [src]="category.imagePath" width="50" alt="">
+          </td>
+          <td>
+            <button type="button" class="btn btn-warning" (click)="editItem(category)">Edit</button>
+            <button [disabled]="editStatus" type="button" class="btn btn-danger"
+              (click)="deleteItem(category)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>

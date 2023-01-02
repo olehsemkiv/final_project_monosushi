@@ -11,6 +11,20 @@
       "description": " Щотижня діє знижка 50% на один з ролів у нашому меню.",
       "imagePath": "https://monosushi.com.ua/wp-content/uploads/2022/07/imgonline-com-ua-compressed-ajbic74qfau00-scaled-697x379.jpg",
       "id": 2
+    },
+    {
+      "title": "фотомарафон",
+      "description": "Розіграш проводиться в соціальній мережі – Instagram.",
+      "imagePath": "https://monosushi.com.ua/wp-content/uploads/2022/07/imgonline-com-ua-compressed-tn6e51pounmi-scaled-697x379.jpg",
+      "id": 3
+    }
+  ],
+  "categories": [
+    {
+      "name": "Роли",
+      "path": "Роли",
+      "imagePath": "https://monosushi.com.ua/wp-content/uploads/2020/10/nav-img-rolls.svg",
+      "id": 3
     }
   ]
 }

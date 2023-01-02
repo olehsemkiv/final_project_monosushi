@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid mt-2">
   <div class="d-flex align-items-start">
     <div class="nav flex-column nav-pills me-3" aria-orientation="vertical">
       <button [routerLink]="[ 'category' ]" routerLinkActive="active" class="nav-link" type="button">Category</button>
@@ -6,7 +6,7 @@
       <button [routerLink]="[ 'discount' ]" routerLinkActive="active" class="nav-link" type="button">Discount</button>
       <button [routerLink]="[ 'orders' ]" routerLinkActive="active" class="nav-link" type="button">Orders</button>
     </div>
-    <div class="tab-content" id="v-pills-tabContent">
+    <div class="tab-content w-100" id="v-pills-tabContent">
       <router-outlet></router-outlet>
     </div>
   </div>

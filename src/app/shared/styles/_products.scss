@@ -14,6 +14,7 @@
 .product__item {
   width: 25%;
   padding: 20px;
+  
 }
 
 .product__border {
@@ -21,17 +22,14 @@
   position: relative;
   padding: 20px;
   cursor: pointer;
-  transition: all 0.3s;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  // align-items: center;
 }
 
 .new,
 .best {
   position: absolute;
-
   display: block;
   width: 44px;
   text-align: center;
@@ -63,7 +61,6 @@
   width: 0;
   height: 0;
   border-radius: 7px;
-
 }
 
 .product__border::before {

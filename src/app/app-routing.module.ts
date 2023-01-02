@@ -29,7 +29,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'discount', component: DiscountComponent },
   { path: 'discount', component: DiscountComponent },
-  { path: 'discount-info', component: DiscountInfoComponent },
+  { path: 'discount/:id', component: DiscountInfoComponent },
   { path: 'product', component: ProductComponent },
   { path: 'roli', component: RoliComponent },
   { path: 'setu', component: SetuComponent },

@@ -19,6 +19,10 @@ export class DiscountServiceService {
     return this.http.get<discountElementResponse[]>(this.api.discount);
   }
 
+  getOne(id: number): Observable<discountElementResponse> {
+    return this.http.get<discountElementResponse>(`${this.api.discount}/${id}`)
+  }
+
   // Створюємо пост
   create(postItem: discountElementRequest): Observable<void> {
     return this.http.post<void>(this.api.discount, postItem)

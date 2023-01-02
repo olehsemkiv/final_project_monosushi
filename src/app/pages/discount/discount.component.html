@@ -6,7 +6,7 @@
       </div>
       <div class="discount__list">
         <div class="discount__item" *ngFor="let discount of discountUser">
-          <a [routerLink]="[ '/discount-info' ]" routerLinkActive="active" class="discount__link">
+          <a [routerLink]="[ '/discount', discount.id ]" class="discount__link">
             <div class="discount__item-info">
               <div class="discount__item-img">
                 <img [src]="discount.imagePath" alt="">
@@ -17,7 +17,7 @@
             </div>
           </a>
           <hr>
-          <a [routerLink]="[ '/discount-info' ]" routerLinkActive="active" class="discount__btn" href="">дізнатись
+          <a [routerLink]="[ '/discount', discount.id ]" class="discount__btn" href="">дізнатись
             більше</a>
         </div>
         </div>
