@@ -1,8 +1,8 @@
 <header class="header">
   <div class="header__wrapper">
-    <a [routerLink]="[ '/home' ]" routerLinkActive="" class="header__logo"> 
-      <img  src="https://monosushi.com.ua/wp-content/uploads/2021/06/logo.svg" alt="" class="header__logo-img">
-      <img  src="https://monosushi.com.ua/wp-content/uploads/2021/08/logo-mobile.svg" alt="" class="mobile__logo">
+    <a [routerLink]="[ '/home' ]" routerLinkActive="" class="header__logo">
+      <img src="https://monosushi.com.ua/wp-content/uploads/2021/06/logo.svg" alt="" class="header__logo-img">
+      <img src="https://monosushi.com.ua/wp-content/uploads/2021/08/logo-mobile.svg" alt="" class="mobile__logo">
     </a>
     <div class="header__nav-wrapper">
       <nav class="header__menu">
@@ -72,7 +72,7 @@
         Працюємо з <b>11:00</b> до <b>22:30</b>
       </div>
     </div>
-    <div class="header__admin">
+    <div class="header__admin" [routerLink]="[ '/admin' ]" routerLinkActive="active">
       <img src="https://monosushi.com.ua/wp-content/themes/monosushi/img/user.svg" alt="">
     </div>
     <div class="header__basket">

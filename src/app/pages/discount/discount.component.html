@@ -5,16 +5,14 @@
         <h2>Акції</h2>
       </div>
       <div class="discount__list">
-        <div class="discount__item">
+        <div class="discount__item" *ngFor="let discount of discountUser">
           <a [routerLink]="[ '/discount-info' ]" routerLinkActive="active" class="discount__link">
             <div class="discount__item-info">
               <div class="discount__item-img">
-                <img
-                  src="https://www.thefamouspeople.com/profiles/images/hirai-momo-1.jpg"
-                  alt="">
+                <img [src]="discount.imagePath" alt="">
               </div>
               <div class="discount__item-title">
-                <h5>рол тижня</h5>
+                <h5>{{discount.title}}</h5>
               </div>
             </div>
           </a>
@@ -22,74 +20,7 @@
           <a [routerLink]="[ '/discount-info' ]" routerLinkActive="active" class="discount__btn" href="">дізнатись
             більше</a>
         </div>
-        <div class="discount__item">
-          <a [routerLink]="[ '/discount-info' ]" routerLinkActive="active" class="discount__link">
-            <div class="discount__item-info">
-              <div class="discount__item-img">
-                <img
-                  src="https://monosushi.com.ua/wp-content/uploads/2022/07/imgonline-com-ua-compressed-ryna9n84oqh1-scaled-697x379.jpg"
-                  alt="">
-              </div>
-              <div class="discount__item-title">
-                <h5>рол тижня</h5>
-              </div>
-            </div>
-          </a>
-          <hr>
-          <a [routerLink]="[ '/discount-info' ]" routerLinkActive="active" class="discount__btn" href="">дізнатись більше</a>
         </div>
-        <div class="discount__item">
-          <a [routerLink]="[ '/discount-info' ]" routerLinkActive="active" class="discount__link">
-            <div class="discount__item-info">
-              <div class="discount__item-img">
-                <img
-                  src="https://monosushi.com.ua/wp-content/uploads/2022/07/imgonline-com-ua-compressed-ryna9n84oqh1-scaled-697x379.jpg"
-                  alt="">
-              </div>
-              <div class="discount__item-title">
-                <h5>рол тижня</h5>
-              </div>
-            </div>
-          </a>
-          <hr>
-          <a [routerLink]="[ '/discount-info' ]" routerLinkActive="active" class="discount__btn" href="">дізнатись більше</a>
-        </div>
-        <div class="discount__item">
-          <a [routerLink]="[ '/discount-info' ]" routerLinkActive="active" class="discount__link">
-            <div class="discount__item-info">
-              <div class="discount__item-img">
-                <img
-                  src="https://monosushi.com.ua/wp-content/uploads/2022/07/imgonline-com-ua-compressed-ryna9n84oqh1-scaled-697x379.jpg"
-                  alt="">
-              </div>
-              <div class="discount__item-title">
-                <h5>рол тижня</h5>
-              </div>
-            </div>
-          </a>
-          <hr>
-          <a [routerLink]="[ '/discount-info' ]" routerLinkActive="active" class="discount__btn" href="">дізнатись більше</a>
-        </div>
-        <div class="discount__item">
-          <a [routerLink]="[ '/discount-info' ]" routerLinkActive="active" class="discount__link">
-            <div class="discount__item-info">
-              <div class="discount__item-img">
-                <img
-                  src="https://monosushi.com.ua/wp-content/uploads/2022/07/imgonline-com-ua-compressed-ryna9n84oqh1-scaled-697x379.jpg"
-                  alt="">
-              </div>
-              <div class="discount__item-title">
-                <h5>рол тижня</h5>
-              </div>
-            </div>
-          </a>
-          <hr>
-          <a [routerLink]="[ '/discount-info' ]" routerLinkActive="active" class="discount__btn" href="">дізнатись більше</a>
-        </div>
-
-
-
-      </div>
 
     </div>
   </div>

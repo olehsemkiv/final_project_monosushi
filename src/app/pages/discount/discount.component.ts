@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DiscountServiceService } from 'src/app/services/discount-service.service';
+import { discountElementResponse } from 'src/app/shared/interfaces/discount/discount.interface';
 
 @Component({
   selector: 'app-discount',
@@ -6,10 +8,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./discount.component.scss']
 })
 export class DiscountComponent implements OnInit {
+  public discountUser: Array<discountElementResponse> = [];
+  constructor(private discountService: DiscountServiceService) { }
 
-  constructor() { }
 
   ngOnInit(): void {
+    this.getDataUser()
+  }
+
+  getDataUser(): void {
+    this.discountService.getAll().subscribe(data => {
+      this.discountUser = data;
+    })
   }
 
 }

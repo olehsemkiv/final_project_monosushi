@@ -41,6 +41,17 @@ const routes: Routes = [
   { path: 'checkout', component: CheckoutComponent },
   { path: 'oferta', component: OfertaComponent },
   { path: '', pathMatch: 'full', redirectTo: 'home' },
+  {
+    path: 'admin', component: AdminComponent, children: [
+      { path: 'category', component: AdminCategoryComponent },
+      { path: 'product', component: AdminProductComponent },
+      { path: 'discount', component: AdminDiscountComponent },
+      { path: 'orders', component: AdminOrdersComponent },
+      { path: '', pathMatch: 'full', redirectTo: 'category' },
+    ]
+  },
+
+
 ];
 
 @NgModule({

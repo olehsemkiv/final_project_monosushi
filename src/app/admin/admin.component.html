@@ -1,1 +1,13 @@
-<p>admin works!</p>
+<div class="container">
+  <div class="d-flex align-items-start">
+    <div class="nav flex-column nav-pills me-3" aria-orientation="vertical">
+      <button [routerLink]="[ 'category' ]" routerLinkActive="active" class="nav-link" type="button">Category</button>
+      <button [routerLink]="[ 'product' ]" routerLinkActive="active" class="nav-link" type="button">Product</button>
+      <button [routerLink]="[ 'discount' ]" routerLinkActive="active" class="nav-link" type="button">Discount</button>
+      <button [routerLink]="[ 'orders' ]" routerLinkActive="active" class="nav-link" type="button">Orders</button>
+    </div>
+    <div class="tab-content" id="v-pills-tabContent">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

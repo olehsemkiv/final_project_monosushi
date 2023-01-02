@@ -1,15 +1,16 @@
 {
-  "posts": [{
-    "id": 1,
-    "title": "json-server",
-    "author": "typicode"
-  }],
-  "comments": [{
-    "id": 1,
-    "body": "some comment",
-    "postId": 1
-  }],
-  "profile": {
-    "name": "typicode"
-  }
+  "posts": [
+    {
+      "title": "Самоприкол",
+      "description": "Some description",
+      "imagePath": "https://monosushi.com.ua/wp-content/uploads/2022/07/imgonline-com-ua-compressed-pa0akdpwddstmsv1-scaled-697x379.jpg",
+      "id": 1
+    },
+    {
+      "title": "Рол дня",
+      "description": " Щотижня діє знижка 50% на один з ролів у нашому меню.",
+      "imagePath": "https://monosushi.com.ua/wp-content/uploads/2022/07/imgonline-com-ua-compressed-ajbic74qfau00-scaled-697x379.jpg",
+      "id": 2
+    }
+  ]
 }
