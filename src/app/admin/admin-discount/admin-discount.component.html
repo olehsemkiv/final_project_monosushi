@@ -1,27 +1,44 @@
 <div class="w-100 mt-2">
   <div class="col-12">
-    <form>
+    <form [formGroup]="discountForm" (ngSubmit)="addItem()">
       <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">Title</label>
-        <input [(ngModel)]="newTitle" name="newTitle" type="text" class="form-control">
+        <input formControlName="title" name="title" type="text" class="form-control">
+        <div class="invalid-feedback"
+          [style.display]="discountForm.controls['title'].errors?.['required'] ? 'block' : 'none' ">
+          Поле Title обов'язкове!
+        </div>
       </div>
       <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">Description</label>
-        <textarea [(ngModel)]="newDescription" name="newDescription" class="form-control" id="floatingTextarea2"
-          style="height: 100px"></textarea>
-      </div>
-      <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Image</label>
-        <input [(ngModel)]="newImagePath" name="newImagePath" type="text" class="form-control">
+        <textarea formControlName="description" name="description" class="form-control" id="floatingTextarea2"
+          style="height: 200px"></textarea>
+        <div class="invalid-feedback"
+          [style.display]="discountForm.controls['description'].errors?.['required'] ? 'block' : 'none' ">
+          Поле Description обов'язкове!
+        </div>
       </div>
 
-      <button [disabled]="!newDescription || !newImagePath || !newTitle" (click)="addItem()" *ngIf="!editStatus"
-        type="button" class="btn btn-success">Add</button>
-      <button [disabled]="!newDescription || !newImagePath || !newTitle" (click)="updateItem()" *ngIf="editStatus"
-        type="button" class="btn btn-primary">Save</button>
+      <ng-container *ngIf="!isUploaded">
+        <div class="mb-3">
+          <label for="formFile" class="form-label">Default file input example</label>
+          <input class="form-control" type="file" id="formFile" (change)="upload($event)">
+        </div>
+        <div class="progress mb-3">
+          <div class="progress-bar progress-bar-striped" role="progressbar" [style.width.%]="uploadPercent"
+            aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="isUploaded">
+        <img [src]="valueByControl('imagePath')" width="300px" alt="">
+        <button type="button" class="btn btn-danger w-100" (click)="deleteImage()">Delete</button>
+      </ng-container>
+      <button [disabled]="discountForm.invalid" type="submit" class="btn btn-success w-100">
+        {{editStatus ? 'Save' : 'Add' }}
+      </button>
     </form>
   </div>
-  <div class="col-12 mt-5 mb-5">
+  <!-- <div class="col-12 mt-5 mb-5">
     <table class="table">
       <thead>
         <tr>
@@ -44,9 +61,36 @@
               (click)="deleteItem(discount)">Delete</button>
           </td>
         </tr>
+      </tbody>
+    </table>
+  </div> -->
 
+  <div class="col-12 mt-5 mb-5">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Title</th>
+          <th scope="col">Description</th>
+          <th scope="col">Image</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let discount of discountAdmin; index as i">
+          <th scope="row">{{i+1}}</th>
+          <td>{{discount.title}}</td>
+          <td>{{discount.description}}</td>
+          <td>
+            <img [src]="discount.imagePath" width="50" alt="">
+          </td>
+          <td>
+            <button type="button" class="btn btn-warning" (click)="editItem(discount)">Edit</button>
+            <button [disabled]="editStatus" type="button" class="btn btn-danger"
+              (click)="deleteItem(discount)">Delete</button>
+          </td>
+        </tr>
       </tbody>
     </table>
   </div>
-
 </div>

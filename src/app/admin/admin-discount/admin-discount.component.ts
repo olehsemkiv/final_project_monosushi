@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { deleteObject, getDownloadURL, percentage, ref, Storage, uploadBytesResumable } from '@angular/fire/storage';
 import { DiscountServiceService } from 'src/app/services/discount-service.service';
 import { discountElementRequest, discountElementResponse } from 'src/app/shared/interfaces/discount/discount.interface';
 
@@ -13,17 +15,33 @@ import { discountElementRequest, discountElementResponse } from 'src/app/shared/
 export class AdminDiscountComponent implements OnInit {
 
   public discountAdmin: Array<discountElementResponse> = [];
-  public newTitle = '';
-  public newDescription = '';
-  public newImagePath = 'https://monosushi.com.ua/wp-content/uploads/2022/07/imgonline-com-ua-compressed-ryna9n84oqh1-scaled-697x379.jpg';
+
+  // public newImagePath = 'https://monosushi.com.ua/wp-content/uploads/2022/07/imgonline-com-ua-compressed-ryna9n84oqh1-scaled-697x379.jpg';
   public editStatus = false;
   public editID!: number;
+  public uploadPercent!: number;
+  public isUploaded = false;
+  public discountForm!: FormGroup;
 
 
-  constructor(private discountService: DiscountServiceService) { }
+  constructor(
+    private discountService: DiscountServiceService,
+    private fb: FormBuilder,
+    private storage: Storage,
+
+  ) { }
 
   ngOnInit(): void {
     this.getData();
+    this.initCategoryForm();
+  }
+
+  initCategoryForm(): void {
+    this.discountForm = this.fb.group({
+      title: [null, Validators.required],
+      description: [null, Validators.required],
+      imagePath: ['https://monosushi.com.ua/wp-content/uploads/2022/07/imgonline-com-ua-compressed-ryna9n84oqh1-scaled-697x379.jpg', Validators.required]
+    })
   }
 
   getData(): void {
@@ -33,51 +51,97 @@ export class AdminDiscountComponent implements OnInit {
   }
 
   addItem(): void {
-    const newPost: discountElementRequest = {
-      title: this.newTitle,
-      description: this.newDescription,
-      imagePath: this.newImagePath,
+    if (this.editStatus) {
+      this.discountService.update(this.discountForm.value, this.editID).subscribe(() => {
+        this.getData();
+      })
+    } else {
+      this.discountService.create(this.discountForm.value).subscribe((data) => {
+        this.getData();
+        console.log(data);
+        
+      })
     }
-    this.discountService.create(newPost).subscribe(data => {
-      this.getData();
-      this.resetForm();
-    })
+    this.discountForm.reset();
+    this.editStatus = false;
+    this.isUploaded = false;
+    this.uploadPercent = 0;
   }
 
   deleteItem(discount: discountElementResponse): void {
-    if (confirm('Delete ?')) {
-      this.discountService.delete(discount.id).subscribe(data => {
+    if (confirm("rly delete ?")) {
+      this.discountService.delete(discount.id).subscribe(() => {
         this.getData();
       })
     }
   }
 
   editItem(discount: discountElementResponse): void {
-    this.editID = discount.id;
-    this.editStatus = true;
-    this.newTitle = discount.title;
-    this.newDescription = discount.description;
-    this.newImagePath = discount.imagePath;
-  }
-
-
-  updateItem(): void {
-    const updatePost: discountElementRequest = {
-      title: this.newTitle,
-      description: this.newDescription,
-      imagePath: this.newImagePath,
-    }
-    this.discountService.update(updatePost, this.editID).subscribe(data => {
-      this.getData();
-      this.resetForm();
+    this.discountForm.patchValue({
+      name: discount.title,
+      description: discount.description,
+      imagePath: discount.imagePath,
     })
+    this.editStatus = true;
+    this.editID = discount.id;
+    this.isUploaded = true;
+  }
+
+  upload(event: any): void {
+    const file = event.target.files[0];
+    this.uploadfile('images', file.name, file)
+      .then(data => {
+        this.discountForm.patchValue({
+          imagePath: data
+        });
+        this.isUploaded = true;
+      })
+      .catch(err => {
+        console.log(err);
+
+      })
 
   }
 
-  resetForm(): void {
-    this.newTitle = '';
-    this.newDescription = '';
-    this.newImagePath = '';
-    this.editStatus = false;
+  async uploadfile(folder: string, name: string, file: File | null): Promise<string> {
+    const path = `${folder}/${name}`;
+    let url = '';
+    if (file) {
+      try {
+        const storageRef = ref(this.storage, path);
+        const task = uploadBytesResumable(storageRef, file);
+        percentage(task).subscribe(data => {
+          this.uploadPercent = data.progress
+        });
+        await task;
+        url = await getDownloadURL(storageRef);
+      } catch (e: any) {
+        console.error(e);
+
+      }
+    } else {
+      console.log('wrong format');
+
+    }
+    return Promise.resolve(url);
   }
+
+  deleteImage(): void {
+    const task = ref(this.storage, this.valueByControl('imagePath'));
+    deleteObject(task).then(() => {
+      console.log('file deleted');
+      this.isUploaded = false;
+      this.uploadPercent = 0;
+      this.discountForm.patchValue({
+        imagePath: null
+      })
+    })
+  }
+
+  valueByControl(control: string): string {
+    return this.discountForm.get(control)?.value;
+  }
+
+
+
 }

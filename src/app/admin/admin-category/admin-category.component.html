@@ -1,5 +1,5 @@
 <div class="w-100 mt-2">
-  <div class="col-6">
+  <div class="col-12">
     <form [formGroup]="categoryForm" (ngSubmit)="addItem()">
       <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">Name</label>
@@ -31,17 +31,6 @@
         <img [src]="valueByControl('imagePath')" width="300px" alt="">
         <button type="button" class="btn btn-danger w-100" (click)="deleteImage()">Delete</button>
       </ng-container>
-
-
-      <!-- <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Image</label>
-        <input formControlName="imagePath" name="imagePath" type="text" class="form-control">
-        <div class="invalid-feedback"
-          [style.display]="categoryForm.controls['imagePath'].errors?.['required'] ? 'block' : 'none' ">
-          Зображення обов'язкове!
-        </div>
-      </div> -->
-
       <button [disabled]="categoryForm.invalid" type="submit" class="btn btn-success w-100">
         {{editStatus ? 'Save' : 'Add' }}
       </button>
@@ -54,7 +43,7 @@
         <tr>
           <th scope="col">#</th>
           <th scope="col">Title</th>
-          <th scope="col">Description</th>
+          <th scope="col">Path</th>
           <th scope="col">Image</th>
           <th scope="col">Actions</th>
         </tr>
@@ -76,5 +65,4 @@
       </tbody>
     </table>
   </div>
-
 </div>
