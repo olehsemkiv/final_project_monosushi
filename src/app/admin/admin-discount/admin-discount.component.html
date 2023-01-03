@@ -1,10 +1,10 @@
-<div class="w-100 mt-2">
+<div class="w-100 mt-2 container">
   <div class="col-12">
     <form [formGroup]="discountForm" (ngSubmit)="addItem()">
       <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">Title</label>
         <input formControlName="title" name="title" type="text" class="form-control">
-        <div class="invalid-feedback"
+        <div class="invalid-feedback mt-3"
           [style.display]="discountForm.controls['title'].errors?.['required'] ? 'block' : 'none' ">
           Поле Title обов'язкове!
         </div>
@@ -13,7 +13,7 @@
         <label for="exampleInputPassword1" class="form-label">Description</label>
         <textarea formControlName="description" name="description" class="form-control" id="floatingTextarea2"
           style="height: 200px"></textarea>
-        <div class="invalid-feedback"
+        <div class="invalid-feedback mt-3"
           [style.display]="discountForm.controls['description'].errors?.['required'] ? 'block' : 'none' ">
           Поле Description обов'язкове!
         </div>
@@ -21,7 +21,7 @@
 
       <ng-container *ngIf="!isUploaded">
         <div class="mb-3">
-          <label for="formFile" class="form-label">Default file input example</label>
+          <label for="formFile" class="form-label">Завантажити зображення...</label>
           <input class="form-control" type="file" id="formFile" (change)="upload($event)">
         </div>
         <div class="progress mb-3">
@@ -29,41 +29,18 @@
             aria-valuemin="0" aria-valuemax="100"></div>
         </div>
       </ng-container>
-      <ng-container *ngIf="isUploaded">
-        <img [src]="valueByControl('imagePath')" width="300px" alt="">
-        <button type="button" class="btn btn-danger w-100" (click)="deleteImage()">Delete</button>
+      <ng-container class="mt-1" *ngIf="isUploaded">
+        <div class="d-flex justify-content-center">
+          <img class="mt-2" [src]="valueByControl('imagePath')" width="300px" alt="">
+        </div>
+
+        <button type="button" class="btn btn-danger w-100 mt-2" (click)="deleteImage()">Delete</button>
       </ng-container>
-      <button [disabled]="discountForm.invalid" type="submit" class="btn btn-success w-100">
+      <button class="mt-1" [disabled]="discountForm.invalid" type="submit" class="btn btn-success w-100 mt-2">
         {{editStatus ? 'Save' : 'Add' }}
       </button>
     </form>
   </div>
-  <!-- <div class="col-12 mt-5 mb-5">
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Title</th>
-          <th scope="col">Description</th>
-          <th scope="col">Image</th>
-          <th scope="col">Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let discount of discountAdmin; index as i">
-          <th scope="row">{{i+1}}</th>
-          <td>{{discount.title}}</td>
-          <td>{{discount.description | slice:0:11}}</td>
-          <td><img [src]="discount.imagePath" width="100" alt=""></td>
-          <td>
-            <button type="button" class="btn btn-warning" (click)="editItem(discount)">Edit</button>
-            <button [disabled]="editStatus" type="button" class="btn btn-danger"
-              (click)="deleteItem(discount)">Delete</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div> -->
 
   <div class="col-12 mt-5 mb-5">
     <table class="table">
@@ -85,8 +62,8 @@
             <img [src]="discount.imagePath" width="50" alt="">
           </td>
           <td>
-            <button type="button" class="btn btn-warning" (click)="editItem(discount)">Edit</button>
-            <button [disabled]="editStatus" type="button" class="btn btn-danger"
+            <button type="button" class="btn btn-warning mx-2" (click)="editItem(discount)">Edit</button>
+            <button [disabled]="editStatus" type="button" class="btn btn-danger mx-2"
               (click)="deleteItem(discount)">Delete</button>
           </td>
         </tr>
