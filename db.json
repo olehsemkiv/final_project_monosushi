@@ -19,12 +19,5 @@
       "id": 3
     }
   ],
-  "categories": [
-    {
-      "name": "Роли",
-      "path": "Роли",
-      "imagePath": "https://monosushi.com.ua/wp-content/uploads/2020/10/nav-img-rolls.svg",
-      "id": 3
-    }
-  ]
+  "categories": []
 }
