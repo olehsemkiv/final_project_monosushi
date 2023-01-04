@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SwiperModule } from 'swiper/angular';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -7,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { provideStorage, getStorage } from '@angular/fire/storage';
 import { environment } from '../environments/environment';
+
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -31,6 +33,11 @@ import { RoliComponent } from './pages/roli/roli.component';
 import { SetuComponent } from './pages/setu/setu.component';
 import { DrinksComponent } from './pages/drinks/drinks.component';
 import { SousComponent } from './pages/sous/sous.component';
+
+// import { ToastrModule } from 'ngx-toastr';
+
+
+
 
 @NgModule({
   declarations: [
@@ -58,13 +65,15 @@ import { SousComponent } from './pages/sous/sous.component';
   ],
   imports: [
     BrowserModule,
+    // BrowserAnimationsModule,
     AppRoutingModule,
     SwiperModule,
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    provideFirebaseApp(() =>initializeApp(environment.firebase)),
-    provideStorage(() => getStorage())
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideStorage(() => getStorage()),
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

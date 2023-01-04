@@ -10,7 +10,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^14.2.0",
+    "@angular/animations": "^14.2.12",
     "@angular/common": "^14.2.0",
     "@angular/compiler": "^14.2.0",
     "@angular/core": "^14.2.0",
@@ -21,6 +21,7 @@
     "@angular/router": "^14.2.0",
     "bootstrap": "^5.2.3",
     "json-server": "^0.17.1",
+    "ngx-toastr": "^16.0.1",
     "rxjs": "~7.5.0",
     "swiper": "^8.4.5",
     "tslib": "^2.3.0",

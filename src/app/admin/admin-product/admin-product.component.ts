@@ -1,4 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { CategoryService } from 'src/app/services/category/category.service';
+import { ProductService } from 'src/app/services/product/product.service';
+import { IcategoryElementResponse } from 'src/app/shared/interfaces/categories/categories.categories';
+import { IProductResponse } from 'src/app/shared/interfaces/products/product.interface';
+import { deleteObject, getDownloadURL, percentage, ref, Storage, uploadBytesResumable } from '@angular/fire/storage';
+import { ImageService } from 'src/app/services/image/image.service';
+// import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-admin-product',
@@ -7,9 +15,133 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminProductComponent implements OnInit {
 
-  constructor() { }
+  public productsAdmin: Array<IProductResponse> = [];
+  public categoriesAdmin: Array<IcategoryElementResponse> = [];
+  public editStatus = false;
+  public editID!: number;
+  public uploadPercent!: number;
+  public isUploaded = false;
+  public productForm!: FormGroup;
+  public openStatus = false;
+
+  constructor(
+    private categoriesService: CategoryService,
+    private productService: ProductService,
+    private fb: FormBuilder,
+    private imageService: ImageService,
+    // private toastr: ToastrService
+  ) { }
 
   ngOnInit(): void {
+    this.initCategoryForm();
+    this.loadDataCategories();
+    this.loadDataProducts();
   }
 
+  initCategoryForm(): void {
+    this.productForm = this.fb.group({
+      category: [null, Validators.required],
+      name: [null, Validators.required],
+      path: [null, Validators.required],
+      description: [null, Validators.required],
+      weight: [null, Validators.required],
+      price: [null, Validators.required],
+      imagePath: [null, Validators.required]
+    })
+  }
+
+  loadDataProducts(): void {
+    this.productService.getAll().subscribe(data => {
+      this.productsAdmin = data;
+    })
+  }
+  loadDataCategories(): void {
+    this.categoriesService.getAll().subscribe(data => {
+      this.categoriesAdmin = data;
+    })
+  }
+
+  addProduct(): void {
+    if (this.editStatus) {
+      this.productService.update(this.productForm.value, this.editID).subscribe(() => {
+        this.loadDataProducts();
+      })
+    }
+    else {
+      this.productService.create(this.productForm.value).subscribe((data) => {
+        this.loadDataProducts();
+      })
+    }
+    this.productForm.reset();
+    this.editStatus = false;
+    this.isUploaded = false;
+    this.uploadPercent = 0;
+    this.openStatus = false;
+
+  }
+
+  editProduct(product: IProductResponse): void {
+    this.productForm.patchValue({
+      category: product.category,
+      name: product.name,
+      path: product.path,
+      description: product.path,
+      weight: product.path,
+      price: product.path,
+      imagePath: product.imagePath,
+      count: [1],
+    })
+    this.editStatus = true;
+    this.editID = product.id;
+    this.isUploaded = true;
+    this.openStatus = true;
+  }
+
+  deleteProduct(product: IProductResponse): void {
+    if (confirm('Rly delete ?')) {
+      this.productService.delete(product.id).subscribe(() => {
+        this.loadDataProducts();
+      })
+    }
+  }
+
+
+
+  upload(event: any): void {
+    // console.log(event);
+    const file = event.target.files[0];
+    this.imageService.uploadfile('images', file.name, file)
+      .then(data => {
+        this.productForm.patchValue({
+          imagePath: data
+        });
+        this.isUploaded = true;
+      })
+      .catch(err => {
+        console.log(err);
+
+      })
+
+  }
+
+  deleteImage(): void {
+    this.imageService.deleteUploadFile(this.valueByControl('imagePath'))
+      .then(() => {
+        this.isUploaded = false;
+        this.uploadPercent = 0;
+        this.productForm.patchValue({ imagePath: null })
+      })
+      .catch(err => {
+        console.error(err);
+      })
+  }
+
+  valueByControl(control: string): string {
+    return this.productForm.get(control)?.value;
+  }
+
+  isOpen(): void {
+    this.openStatus = !this.openStatus;
+  }
 }
+
