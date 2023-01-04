@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { deleteObject, getDownloadURL, percentage, ref, Storage, uploadBytesResumable } from '@angular/fire/storage';
 import { DiscountServiceService } from 'src/app/services/discount-service.service';
 import { discountElementRequest, discountElementResponse } from 'src/app/shared/interfaces/discount/discount.interface';
+import { ToastrService } from 'ngx-toastr';
 
 
 
@@ -28,6 +29,7 @@ export class AdminDiscountComponent implements OnInit {
     private discountService: DiscountServiceService,
     private fb: FormBuilder,
     private storage: Storage,
+    private toastr: ToastrService
 
   ) { }
 
@@ -40,7 +42,7 @@ export class AdminDiscountComponent implements OnInit {
     this.discountForm = this.fb.group({
       title: [null, Validators.required],
       description: [null, Validators.required],
-      imagePath: ['https://monosushi.com.ua/wp-content/uploads/2022/07/imgonline-com-ua-compressed-ryna9n84oqh1-scaled-697x379.jpg', Validators.required]
+      imagePath: [null, Validators.required]
     })
   }
 
@@ -54,12 +56,13 @@ export class AdminDiscountComponent implements OnInit {
     if (this.editStatus) {
       this.discountService.update(this.discountForm.value, this.editID).subscribe(() => {
         this.getData();
+        this.toastr.success('Product Update');
       })
     } else {
       this.discountService.create(this.discountForm.value).subscribe((data) => {
         this.getData();
-        console.log(data);
-        
+        this.toastr.success('Product Add');
+
       })
     }
     this.discountForm.reset();
@@ -72,6 +75,7 @@ export class AdminDiscountComponent implements OnInit {
     if (confirm("rly delete ?")) {
       this.discountService.delete(discount.id).subscribe(() => {
         this.getData();
+        this.toastr.success('Product Delete');
       })
     }
   }

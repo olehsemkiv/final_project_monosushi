@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { deleteObject, getDownloadURL, percentage, ref, Storage, uploadBytesResumable } from '@angular/fire/storage';
 import { CategoryService } from 'src/app/services/category/category.service';
 import { IcategoryElementResponse, IcategoryElementRequest } from 'src/app/shared/interfaces/categories/categories.categories';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-admin-category',
@@ -22,7 +23,8 @@ export class AdminCategoryComponent implements OnInit {
   constructor(
     private categoriesService: CategoryService,
     private fb: FormBuilder,
-    private storage: Storage
+    private storage: Storage,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -34,7 +36,7 @@ export class AdminCategoryComponent implements OnInit {
     this.categoryForm = this.fb.group({
       name: [null, Validators.required],
       path: [null, Validators.required],
-      imagePath: ['https://monosushi.com.ua/wp-content/uploads/2020/10/nav-img-rolls.svg', Validators.required]
+      imagePath: [null, Validators.required]
     })
   }
 
@@ -49,10 +51,12 @@ export class AdminCategoryComponent implements OnInit {
     if (this.editStatus) {
       this.categoriesService.update(this.categoryForm.value, this.editID).subscribe(() => {
         this.getData();
+        this.toastr.success('Product Update');
       })
     } else {
       this.categoriesService.create(this.categoryForm.value).subscribe(() => {
         this.getData();
+        this.toastr.success('Product Add');
       })
     }
     this.categoryForm.reset();
@@ -76,6 +80,7 @@ export class AdminCategoryComponent implements OnInit {
     if (confirm("rly delete ?")) {
       this.categoriesService.delete(category.id).subscribe(() => {
         this.getData();
+        this.toastr.success('Product Delete');
       })
     }
   }

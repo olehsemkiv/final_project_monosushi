@@ -20,21 +20,5 @@
       "id": 3
     }
   ],
-  "products": [
-    {
-      "category": {
-        "name": "Суші",
-        "path": "sushi",
-        "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-39325.appspot.com/o/images%2F%D0%BC%D0%BE%D0%BC%D0%BE12.jpg?alt=media&token=89504387-4834-4c99-b5bb-90659cce7721",
-        "id": 1
-      },
-      "name": "віааі",
-      "path": "івфа",
-      "description": "іфваівфа",
-      "weight": "фіваіфв",
-      "price": 123,
-      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-39325.appspot.com/o/images%2F%D0%BC%D0%BE%D0%BC%D0%BE8.jpg?alt=media&token=3a0a39f7-8de2-4a2c-a050-57450ef9fd3c",
-      "id": 1
-    }
-  ]
+  "products": []
 }

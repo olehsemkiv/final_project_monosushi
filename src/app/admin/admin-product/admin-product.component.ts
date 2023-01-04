@@ -4,9 +4,9 @@ import { CategoryService } from 'src/app/services/category/category.service';
 import { ProductService } from 'src/app/services/product/product.service';
 import { IcategoryElementResponse } from 'src/app/shared/interfaces/categories/categories.categories';
 import { IProductResponse } from 'src/app/shared/interfaces/products/product.interface';
-import { deleteObject, getDownloadURL, percentage, ref, Storage, uploadBytesResumable } from '@angular/fire/storage';
 import { ImageService } from 'src/app/services/image/image.service';
-// import { ToastrService } from 'ngx-toastr';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-admin-product',
@@ -29,7 +29,7 @@ export class AdminProductComponent implements OnInit {
     private productService: ProductService,
     private fb: FormBuilder,
     private imageService: ImageService,
-    // private toastr: ToastrService
+    private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -65,11 +65,13 @@ export class AdminProductComponent implements OnInit {
     if (this.editStatus) {
       this.productService.update(this.productForm.value, this.editID).subscribe(() => {
         this.loadDataProducts();
+        this.toastr.success('Product Update');
       })
     }
     else {
       this.productService.create(this.productForm.value).subscribe((data) => {
         this.loadDataProducts();
+        this.toastr.success('Producnt Add');
       })
     }
     this.productForm.reset();
@@ -85,9 +87,9 @@ export class AdminProductComponent implements OnInit {
       category: product.category,
       name: product.name,
       path: product.path,
-      description: product.path,
-      weight: product.path,
-      price: product.path,
+      description: product.description,
+      weight: product.weight,
+      price: product.price,
       imagePath: product.imagePath,
       count: [1],
     })
@@ -101,6 +103,7 @@ export class AdminProductComponent implements OnInit {
     if (confirm('Rly delete ?')) {
       this.productService.delete(product.id).subscribe(() => {
         this.loadDataProducts();
+        this.toastr.success('Product Delete');
       })
     }
   }
@@ -142,6 +145,7 @@ export class AdminProductComponent implements OnInit {
 
   isOpen(): void {
     this.openStatus = !this.openStatus;
+    this.editStatus = false;
   }
 }
 

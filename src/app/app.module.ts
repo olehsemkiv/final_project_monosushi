@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CommonModule } from '@angular/common';
 import { SwiperModule } from 'swiper/angular';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -34,7 +35,8 @@ import { SetuComponent } from './pages/setu/setu.component';
 import { DrinksComponent } from './pages/drinks/drinks.component';
 import { SousComponent } from './pages/sous/sous.component';
 
-// import { ToastrModule } from 'ngx-toastr';
+import { ToastrModule } from 'ngx-toastr';
+
 
 
 
@@ -65,7 +67,6 @@ import { SousComponent } from './pages/sous/sous.component';
   ],
   imports: [
     BrowserModule,
-    // BrowserAnimationsModule,
     AppRoutingModule,
     SwiperModule,
     FormsModule,
@@ -73,6 +74,9 @@ import { SousComponent } from './pages/sous/sous.component';
     ReactiveFormsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideStorage(() => getStorage()),
+    CommonModule,
+    BrowserAnimationsModule, 
+    ToastrModule.forRoot(), 
     
   ],
   providers: [],
