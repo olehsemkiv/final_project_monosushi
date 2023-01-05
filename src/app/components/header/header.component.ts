@@ -7,9 +7,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
+  public navMenuStatus = false;
+
+
+
   constructor() { }
 
   ngOnInit(): void {
   }
+
+  openNavMenu(): void {
+    this.navMenuStatus = !this.navMenuStatus
+  }
+
+  closeNavMenu(): void {
+    this.navMenuStatus = !this.navMenuStatus
+  }
+
+
+
 
 }

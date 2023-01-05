@@ -4,6 +4,7 @@ import { deleteObject, getDownloadURL, percentage, ref, Storage, uploadBytesResu
 import { CategoryService } from 'src/app/services/category/category.service';
 import { IcategoryElementResponse, IcategoryElementRequest } from 'src/app/shared/interfaces/categories/categories.categories';
 import { ToastrService } from 'ngx-toastr';
+import { ImageService } from 'src/app/services/image/image.service';
 
 @Component({
   selector: 'app-admin-category',
@@ -24,6 +25,8 @@ export class AdminCategoryComponent implements OnInit {
     private categoriesService: CategoryService,
     private fb: FormBuilder,
     private storage: Storage,
+    private imageService: ImageService,
+
     private toastr: ToastrService
   ) { }
 
@@ -88,7 +91,7 @@ export class AdminCategoryComponent implements OnInit {
   upload(event: any): void {
     // console.log(event);
     const file = event.target.files[0];
-    this.uploadfile('images', file.name, file)
+    this.imageService.uploadfile('images', file.name, file)
       .then(data => {
         this.categoryForm.patchValue({
           imagePath: data
@@ -102,39 +105,16 @@ export class AdminCategoryComponent implements OnInit {
 
   }
 
-  async uploadfile(folder: string, name: string, file: File | null): Promise<string> {
-    const path = `${folder}/${name}`;
-    let url = '';
-    if (file) {
-      try {
-        const storageRef = ref(this.storage, path);
-        const task = uploadBytesResumable(storageRef, file);
-        percentage(task).subscribe(data => {
-          this.uploadPercent = data.progress
-        });
-        await task;
-        url = await getDownloadURL(storageRef);
-      } catch (e: any) {
-        console.error(e);
-
-      }
-    } else {
-      console.log('wrong format');
-
-    }
-    return Promise.resolve(url);
-  }
-
   deleteImage(): void {
-    const task = ref(this.storage, this.valueByControl('imagePath'));
-    deleteObject(task).then(() => {
-      console.log('file deleted');
-      this.isUploaded = false;
-      this.uploadPercent = 0;
-      this.categoryForm.patchValue({
-        imagePath: null
+    this.imageService.deleteUploadFile(this.valueByControl('imagePath'))
+      .then(() => {
+        this.isUploaded = false;
+        this.uploadPercent = 0;
+        this.categoryForm.patchValue({ imagePath: null })
       })
-    })
+      .catch(err => {
+        console.error(err);
+      })
   }
 
   valueByControl(control: string): string {

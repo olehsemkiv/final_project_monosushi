@@ -1,4 +1,4 @@
-<header class="header">
+<header class="header" >
   <div class="header__wrapper">
     <a [routerLink]="[ '/home' ]" routerLinkActive="" class="header__logo">
       <img src="https://monosushi.com.ua/wp-content/uploads/2021/06/logo.svg" alt="" class="header__logo-img">
@@ -55,10 +55,16 @@
         </ul>
       </nav>
     </div>
-    <div class="header__burger-menu">
+    <div class="header__burger-menu" (click)="openNavMenu()">
       <img
         src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/1024px-Hamburger_icon.svg.png"
         alt="">
+      <div class="nav__menu" [ngClass]="{'nav__menu-open': navMenuStatus}">
+        <a class="nav__menu-item" [routerLink]="[ '/delivery-and-payment' ]" routerLinkActive="active">Доставка та
+          оплата</a>
+        <a class="nav__menu-item" [routerLink]="[ '/about' ]" routerLinkActive="active">Про нас</a>
+        <a class="nav__menu-item" [routerLink]="[ '/discount' ]" routerLinkActive="active">Акції</a>
+      </div>
     </div>
     <div class="header__call-back">
       <button class="header__call-btn">

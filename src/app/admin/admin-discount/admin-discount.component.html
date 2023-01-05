@@ -57,7 +57,7 @@
         <tr *ngFor="let discount of discountAdmin; index as i">
           <th scope="row">{{i+1}}</th>
           <td>{{discount.title}}</td>
-          <td>{{discount.description}}</td>
+          <td>{{discount.description | slice:0:60}} <span *ngIf="discount.description.length > 60">...</span></td>
           <td>
             <img [src]="discount.imagePath" width="50" alt="">
           </td>

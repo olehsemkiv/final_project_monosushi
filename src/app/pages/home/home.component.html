@@ -75,4 +75,66 @@
       </div>
     </div>
   </div>
+
+  <div class="wrapper__home">
+
+
+
+    <div class="categories-menu">
+      <ul class="categories-list">
+        <li class="categories-list-item">
+          <a href="" class="categories-list-link">Всі</a>
+        </li>
+        <li class="categories-list-item">
+          <a href="" class="categories-list-link">Філадельфія</a>
+        </li>
+        <li class="categories-list-item">
+          <a href="" class="categories-list-link">Каліфорнія</a>
+        </li>
+        <li class="categories-list-item">
+          <a href="" class="categories-list-link">Запечені</a>
+        </li>
+        <li class="categories-list-item">
+          <a href="" class="categories-list-link">Фірмові</a>
+        </li>
+        <li class="categories-list-item">
+          <a href="" class="categories-list-link">Макі</a>
+        </li>
+        <li class="categories-list-item">
+          <a href="" class="categories-list-link">Преміум</a>
+        </li>
+      </ul>
+    </div>
+
+
+
+
+    <div class="pruduct__wrapper">
+      <div class="product__item" *ngFor="let product of homeUserProducts">
+        <div class="product__border">
+          <div class="product__image-wrap">
+            <a href="">
+              <img [src]="product.imagePath" alt="">
+            </a>
+          </div>
+          <div class="product__title-wrap">
+            <div class="product__title">
+              <a href="">{{product.name}}</a>
+            </div>
+          </div>
+          <div class="product__desc">
+            <p>{{product.description}}</p>
+            <div class="product__size"><span class="size">{{product.weight}}</span> <span>г</span> </div>
+          </div>
+          <div class="product__controls">
+            <div class="product__price-wrap">
+              <div class="product__price"><b class="price">{{product.price}}</b> грн</div>
+              <button class="btn__order">Замовити</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>

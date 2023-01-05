@@ -178,6 +178,7 @@
   &__burger-menu img {
     width: 50%;
     height: 50%;
+    z-index: 10;
   }
 
   &__basket {
@@ -340,6 +341,50 @@
   height: 70%;
 }
 
+.nav__menu {
+  width: 235px;
+  height: 264px;
+  position: absolute;
+  padding: 28px 25px 0px 25px;
+  background: #fff;
+  border: 2px solid #b5d8f7;
+  border-radius: 10px;
+  top: -14px;
+  left: -20px;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.nav__menu-item {
+  display: block;
+  text-decoration: none;
+  font-weight: bold;
+  color: #252525;
+  font-size: 16px;
+  line-height: 1em;
+  padding: 12px 16px;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  transition: .35s;
+
+}
+
+.nav__menu-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.nav__menu-close {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.nav__menu-item:first-child {
+  margin-top: 57px;
+}
+
+
+
 
 @media screen and (max-width: 1500px) {
   .header {
@@ -401,9 +446,8 @@
   .header__nav-wrapper {
     display: none;
   }
-  .header__wrapper {
-    
-  }
+
+  .header__wrapper {}
 }
 
 @media screen and (max-width: 768px) {

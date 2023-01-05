@@ -2,6 +2,7 @@
 @import 'swiper/scss/navigation';
 @import 'swiper/scss/pagination';
 @import '/src/app/shared/styles/variables';
+@import '/src/app/shared/styles/products';
 
 .home__container {
   padding: 40px 0;
@@ -142,6 +143,50 @@ swiperSlide {
   line-height: 1.5em;
 }
 
+.categories-menu {
+
+  width: 1200px;
+  margin: 0 auto;
+  margin-top: 90px;
+
+  ul {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin: 20px 0;
+  }
+}
+
+
+.categories-list-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 14.28%;
+  font-weight: bold;
+  border: 1px solid #dcdcdc;
+  padding: 22px 0;
+}
+
+.categories-list-link {
+  font-size: 16px;
+  text-decoration: none;
+  display: block;
+  color: #5A5A5A;
+}
+
+.active-category {
+  color: #252525;
+  font-weight: 700;
+  border: 1px solid transparent;
+  border-top: 3px solid $base-color;
+}
+
+@media screen and (max-width: 1200px) {
+  .categories-menu {
+    display: none;
+  }
+}
 
 @media screen and (max-width: 1100px) {
   .home__info-item-wrapper {

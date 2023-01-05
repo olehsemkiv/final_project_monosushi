@@ -1,5 +1,7 @@
 // import { ViewEncapsulation } from '@angular/compiler';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { ProductService } from 'src/app/services/product/product.service';
+import { IProductResponse } from 'src/app/shared/interfaces/products/product.interface';
 
 // import Swiper core and required modules
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper';
@@ -15,6 +17,8 @@ SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay]);
 })
 export class HomeComponent implements OnInit {
 
+  public homeUserProducts: Array<IProductResponse> = [];
+
   swiperConfig: any = {
 
     breakpoints: {
@@ -28,9 +32,18 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  constructor() { }
+  constructor(
+    private productService: ProductService
+  ) { }
 
   ngOnInit(): void {
+    this.loadUserProducts();
+  }
+
+  loadUserProducts(): void {
+    this.productService.getAll().subscribe(data => {
+      this.homeUserProducts = data;
+    })
   }
 
 }

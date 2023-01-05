@@ -4,6 +4,7 @@ import { deleteObject, getDownloadURL, percentage, ref, Storage, uploadBytesResu
 import { DiscountServiceService } from 'src/app/services/discount-service.service';
 import { discountElementRequest, discountElementResponse } from 'src/app/shared/interfaces/discount/discount.interface';
 import { ToastrService } from 'ngx-toastr';
+import { ImageService } from 'src/app/services/image/image.service';
 
 
 
@@ -17,7 +18,6 @@ export class AdminDiscountComponent implements OnInit {
 
   public discountAdmin: Array<discountElementResponse> = [];
 
-  // public newImagePath = 'https://monosushi.com.ua/wp-content/uploads/2022/07/imgonline-com-ua-compressed-ryna9n84oqh1-scaled-697x379.jpg';
   public editStatus = false;
   public editID!: number;
   public uploadPercent!: number;
@@ -29,6 +29,8 @@ export class AdminDiscountComponent implements OnInit {
     private discountService: DiscountServiceService,
     private fb: FormBuilder,
     private storage: Storage,
+    private imageService: ImageService,
+
     private toastr: ToastrService
 
   ) { }
@@ -82,7 +84,7 @@ export class AdminDiscountComponent implements OnInit {
 
   editItem(discount: discountElementResponse): void {
     this.discountForm.patchValue({
-      name: discount.title,
+      title: discount.title,
       description: discount.description,
       imagePath: discount.imagePath,
     })
@@ -92,8 +94,9 @@ export class AdminDiscountComponent implements OnInit {
   }
 
   upload(event: any): void {
+    // console.log(event);
     const file = event.target.files[0];
-    this.uploadfile('images', file.name, file)
+    this.imageService.uploadfile('images', file.name, file)
       .then(data => {
         this.discountForm.patchValue({
           imagePath: data
@@ -107,39 +110,16 @@ export class AdminDiscountComponent implements OnInit {
 
   }
 
-  async uploadfile(folder: string, name: string, file: File | null): Promise<string> {
-    const path = `${folder}/${name}`;
-    let url = '';
-    if (file) {
-      try {
-        const storageRef = ref(this.storage, path);
-        const task = uploadBytesResumable(storageRef, file);
-        percentage(task).subscribe(data => {
-          this.uploadPercent = data.progress
-        });
-        await task;
-        url = await getDownloadURL(storageRef);
-      } catch (e: any) {
-        console.error(e);
-
-      }
-    } else {
-      console.log('wrong format');
-
-    }
-    return Promise.resolve(url);
-  }
-
   deleteImage(): void {
-    const task = ref(this.storage, this.valueByControl('imagePath'));
-    deleteObject(task).then(() => {
-      console.log('file deleted');
-      this.isUploaded = false;
-      this.uploadPercent = 0;
-      this.discountForm.patchValue({
-        imagePath: null
+    this.imageService.deleteUploadFile(this.valueByControl('imagePath'))
+      .then(() => {
+        this.isUploaded = false;
+        this.uploadPercent = 0;
+        this.discountForm.patchValue({ imagePath: null })
       })
-    })
+      .catch(err => {
+        console.error(err);
+      })
   }
 
   valueByControl(control: string): string {
