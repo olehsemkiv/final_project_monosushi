@@ -1,1 +1,40 @@
-<p>product works!</p>
+<section class="roli">
+  <div class="roli__wrapper">
+    <div class="product__container">
+      <div class="title">
+        <h2>Роли</h2>
+      </div>
+      <div class="pruduct__wrapper">
+        <div class="product__item" *ngFor="let product of homeUserProducts">
+          <div class="product__border">
+            <div class="product__image-wrap">
+              <a>
+                <img [routerLink]="[ '/product/'+product.category.path, product.id]" [src]="product.imagePath" alt="">
+              </a>
+            </div>
+            <div class="product__title-wrap">
+              <div class="product__title">
+                <a [routerLink]="[ '/product/'+product.category.path, product.id]">{{product.name}}</a>
+              </div>
+            </div>
+            <div class="product__desc">
+              <p>{{product.description}}</p>
+              <div class="product__size"><span class="size">{{product.weight}}</span> <span>г</span> </div>
+            </div>
+            <div class="product__controls">
+              <div class="product__price-wrap">
+                <div class="product__price"><b class="price">{{product.price}}</b> грн</div>
+                <div class="counter__button-group">
+                  <button class="counter__btn" type="button">-</button>
+                  <input readonly class="counter__product" type="text" value="1">
+                  <button class="counter__btn" type="button">+</button>
+                </div>
+                <button class="btn__order">Замовити</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

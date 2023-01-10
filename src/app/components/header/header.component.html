@@ -1,4 +1,4 @@
-<header class="header" >
+<header class="header">
   <div class="header__wrapper">
     <a [routerLink]="[ '/home' ]" routerLinkActive="" class="header__logo">
       <img src="https://monosushi.com.ua/wp-content/uploads/2021/06/logo.svg" alt="" class="header__logo-img">
@@ -17,7 +17,7 @@
             </a>
           </li>
           <li class="header__menu-item">
-            <a [routerLink]="[ '/roli' ]" routerLinkActive="active" class="header__menu-link">
+            <a [routerLink]="[ '/product/roly' ]" routerLinkActive="active" class="header__menu-link">
               <div class="header__menu-link-wrapper">
                 <img class="header__menu-item-image"
                   src="https://monosushi.com.ua/wp-content/uploads/2020/10/nav-img-rolls.svg" alt="">
@@ -26,7 +26,7 @@
             </a>
           </li>
           <li class="header__menu-item">
-            <a [routerLink]="[ '/setu' ]" routerLinkActive="active" class="header__menu-link">
+            <a [routerLink]="[ '/product/sety' ]" routerLinkActive="active" class="header__menu-link">
               <div class="header__menu-link-wrapper">
                 <img class="header__menu-item-image"
                   src="https://monosushi.com.ua/wp-content/uploads/2020/10/nav-img-sets.svg" alt="">
@@ -35,7 +35,7 @@
             </a>
           </li>
           <li class="header__menu-item">
-            <a [routerLink]="[ '/drinks' ]" routerLinkActive="active" class="header__menu-link">
+            <a [routerLink]="[ '/product/drinks' ]" routerLinkActive="active" class="header__menu-link">
               <div class="header__menu-link-wrapper">
                 <img class="header__menu-item-image"
                   src="https://monosushi.com.ua/wp-content/uploads/2020/10/nav-img-drinks.svg" alt="">
@@ -44,7 +44,7 @@
             </a>
           </li>
           <li class="header__menu-item">
-            <a [routerLink]="[ '/sous' ]" routerLinkActive="active" class="header__menu-link">
+            <a [routerLink]="[ '/product/sous' ]" routerLinkActive="active" class="header__menu-link">
               <div class="header__menu-link-wrapper">
                 <img class="header__menu-item-image" src="https://monosushi.com.ua/wp-content/uploads/2021/09/icon.svg"
                   alt="">
@@ -87,7 +87,7 @@
         <img src="https://monosushi.com.ua/wp-content/themes/monosushi/img/basket.svg" alt="">
         <span class="header__count-item">0</span>
         <div class="header__basket-price">
-          <b>0</b>
+          <b>{{totalPrice}}</b>
           <span>грн</span>
         </div>
       </div>

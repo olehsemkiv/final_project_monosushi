@@ -24,18 +24,23 @@ import { AdminCategoryComponent } from './admin/admin-category/admin-category.co
 import { AdminProductComponent } from './admin/admin-product/admin-product.component';
 import { AdminDiscountComponent } from './admin/admin-discount/admin-discount.component';
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
+import { ProductInfoResolver } from './services/product/product-info.resolver';
+import { DiscountInfoResolver } from './services/discount/discount-info.resolver';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'discount', component: DiscountComponent },
-  { path: 'discount', component: DiscountComponent },
-  { path: 'discount/:id', component: DiscountInfoComponent },
-  { path: 'product', component: ProductComponent },
-  { path: 'roli', component: RoliComponent },
-  { path: 'setu', component: SetuComponent },
-  { path: 'drinks', component: DrinksComponent },
-  { path: 'sous', component: SousComponent },
-  { path: 'product-info', component: ProductInfoComponent },
+  {
+    path: 'discount/:id', component: DiscountInfoComponent, resolve: {
+      discountInfo: DiscountInfoResolver
+    }
+  },
+  { path: 'product/:category', component: ProductComponent },
+  {
+    path: 'product/:category/:id', component: ProductInfoComponent, resolve: {
+      productInfo: ProductInfoResolver
+    }
+  },
   { path: 'delivery-and-payment', component: DeliveryAndPaymentComponent },
   { path: 'about', component: AboutComponent },
   { path: 'checkout', component: CheckoutComponent },

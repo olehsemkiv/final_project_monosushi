@@ -27,8 +27,8 @@ export class ProductService {
   }
 
   // Створюємо пост
-  create(product: IProductRequest): Observable<void> {
-    return this.http.post<void>(this.api.products, product)
+  create(product: IProductRequest): Observable<IProductResponse> {
+    return this.http.post<IProductResponse>(this.api.products, product)
   }
 
   // Видалення поста
@@ -37,8 +37,12 @@ export class ProductService {
   }
 
   // Оновлення посту
-  update(product: IProductRequest, id: number): Observable<IProductRequest> {
-    return this.http.patch<IProductRequest>(`${this.api.products}/${id}`, product)
+  update(product: IProductRequest, id: number): Observable<IProductResponse> {
+    return this.http.patch<IProductResponse>(`${this.api.products}/${id}`, product)
+  }
+
+  getOne(id: number): Observable<IProductResponse> {
+    return this.http.get<IProductResponse>(`${this.api.products}/${id}`)
   }
 
 }

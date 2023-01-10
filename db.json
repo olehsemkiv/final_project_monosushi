@@ -155,21 +155,6 @@
         "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-39325.appspot.com/o/images%2Froly-category.svg?alt=media&token=78054b20-b776-48ee-a9d1-7fd7fab1f7e0",
         "id": 1
       },
-      "name": "Філадельфія грін з креветкою",
-      "path": "filadelfiya-grin-z-krevetkoyu",
-      "description": "Рис, крем сир, огірок, креветка, авокадо, унагі соус",
-      "weight": "270",
-      "price": 279,
-      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-39325.appspot.com/o/images%2Frol-7.jpg?alt=media&token=a81d93d5-66b8-4d81-9aaf-ce7b129f31bc",
-      "id": 7
-    },
-    {
-      "category": {
-        "name": "Роли",
-        "path": "roly",
-        "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-39325.appspot.com/o/images%2Froly-category.svg?alt=media&token=78054b20-b776-48ee-a9d1-7fd7fab1f7e0",
-        "id": 1
-      },
       "name": "Каліфорнія з крабом",
       "path": "kaliforniya-z-krabom",
       "description": "Рис, спайсі соус, авокадо, огірок, краб, кунжут",
@@ -267,6 +252,52 @@
       "price": 415,
       "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-39325.appspot.com/o/images%2Fset-6.jpg?alt=media&token=506baf41-e8b3-403e-986a-3cb459ca6b93",
       "id": 14
+    },
+    {
+      "category": {
+        "name": "Напої",
+        "path": "drinks",
+        "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-39325.appspot.com/o/images%2Fdrinks-category.svg?alt=media&token=178a6a70-2a4f-4be0-8c68-fabfee8f0522",
+        "id": 3
+      },
+      "name": "Pepsi",
+      "path": "pepsi",
+      "description": "Напій Pepsi",
+      "weight": "0.33",
+      "price": 35,
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-39325.appspot.com/o/images%2Fpepsi.jpg?alt=media&token=0a0650da-49cb-4e01-939d-c4cc572f5aae",
+      "id": 15
+    },
+    {
+      "category": {
+        "name": "Соуси",
+        "path": "sous",
+        "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-39325.appspot.com/o/images%2Fsous-category.svg?alt=media&token=ec0c1fca-eb74-4fb9-84a6-138094dc3c63",
+        "id": 4
+      },
+      "name": "Імбир",
+      "path": "imbyr",
+      "description": "Соус Імбир",
+      "weight": "30",
+      "price": 12,
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-39325.appspot.com/o/images%2Fimbyr.png?alt=media&token=3daf36ad-9f01-4be0-9090-01eb52fa1090",
+      "id": 16
+    },
+    {
+      "category": {
+        "name": "Роли",
+        "path": "roly",
+        "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-39325.appspot.com/o/images%2Froly-category.svg?alt=media&token=78054b20-b776-48ee-a9d1-7fd7fab1f7e0",
+        "id": 1
+      },
+      "name": "fsadf",
+      "path": "sdaf",
+      "description": "sdafsadf",
+      "weight": "dsfasdf",
+      "price": 120,
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-39325.appspot.com/o/images%2F%D0%BC%D1%96%D0%BD%D0%B0.jpg?alt=media&token=ef5dffb3-4692-415c-9e3f-206030903416",
+      "count": 1,
+      "id": 17
     }
   ]
 }

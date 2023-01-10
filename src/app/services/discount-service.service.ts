@@ -9,7 +9,7 @@ import { discountElementRequest, discountElementResponse } from 'src/app/shared/
   providedIn: 'root'
 })
 export class DiscountServiceService {
-  
+
   private url = environment.BACKEND_URL;
   private api = { discount: `${this.url}/posts` };
   constructor(private http: HttpClient) { }

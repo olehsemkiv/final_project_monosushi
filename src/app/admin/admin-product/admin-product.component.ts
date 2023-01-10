@@ -36,6 +36,8 @@ export class AdminProductComponent implements OnInit {
     this.initCategoryForm();
     this.loadDataCategories();
     this.loadDataProducts();
+
+
   }
 
   initCategoryForm(): void {
@@ -46,7 +48,8 @@ export class AdminProductComponent implements OnInit {
       description: [null, Validators.required],
       weight: [null, Validators.required],
       price: [null, Validators.required],
-      imagePath: [null, Validators.required]
+      imagePath: [null, Validators.required],
+      count: [1]
     })
   }
 
@@ -63,7 +66,7 @@ export class AdminProductComponent implements OnInit {
 
   addProduct(): void {
     if (this.editStatus) {
-      this.productService.update(this.productForm.value, this.editID).subscribe(() => {
+      this.productService.update(this.productForm.value, this.editID).subscribe((data) => {
         this.loadDataProducts();
         this.toastr.success('Product Update');
       })
@@ -73,6 +76,7 @@ export class AdminProductComponent implements OnInit {
         this.loadDataProducts();
         this.toastr.success('Producnt Add');
       })
+
     }
     this.productForm.reset();
     this.editStatus = false;
@@ -90,8 +94,7 @@ export class AdminProductComponent implements OnInit {
       description: product.description,
       weight: product.weight,
       price: product.price,
-      imagePath: product.imagePath,
-      count: [1],
+      imagePath: product.imagePath
     })
     this.editStatus = true;
     this.editID = product.id;
