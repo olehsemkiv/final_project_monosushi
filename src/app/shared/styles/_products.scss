@@ -1,7 +1,7 @@
 .product__container {
   max-width: 1750px;
   margin: 0 auto;
-  padding: 0 15px;
+  padding: 0px;
 }
 
 .pruduct__wrapper {
@@ -14,7 +14,7 @@
 .product__item {
   width: 25%;
   padding: 20px;
-  
+
 }
 
 .product__border {
@@ -228,11 +228,66 @@
   }
 }
 
+.counter__button-group {
+  padding: 4px;
+  border: 1px solid #dcdcdc;
+  border-radius: 10px;
+  color: #252525;
+  font-size: 16px;
+  line-height: 14px;
+  display: flex;
+  align-items: center;
+}
+
+.counter__btn {
+  border: none;
+  background: transparent;
+  width: 32px;
+  height: 36px;
+  font-size: 24px;
+  line-height: 14px;
+  color: #5a5a5a;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 5px;
+  transition: all .4s;
+
+  &:hover {
+    background-color: $base-color;
+  }
+}
+
+.counter__product {
+  border: none;
+  text-align: center;
+  width: 32px;
+  height: 36px;
+}
+
 
 @media screen and (max-width: 1200px) {
   .product__item {
     width: 33.3333%;
     padding: 15px;
+  }
+
+  .btn__order {
+    padding: 7px 9px;
+    font-size: 12px;
+  }
+
+  .counter__button-group {}
+
+  .counter__btn {
+    width: 26px;
+    height: 24px;
+    line-height: none;
+  }
+
+  .counter__product {
+    width: 26px;
+    height: 24px;
+    line-height: none;
   }
 }
 
@@ -252,6 +307,7 @@
     padding: 5px 16px;
   }
 
+
 }
 
 @media screen and (max-width: 768px) {
@@ -259,11 +315,16 @@
   .product__container {
     max-width: 700px;
     margin: 0 auto;
-    padding: 0 15px;
+    padding: 0px;
   }
+
 
   .product__item {
     width: 50%;
+    padding: 0px;
+  }
+
+  .product__border {
     padding: 15px;
   }
 
@@ -276,26 +337,51 @@
     font-size: 14px;
   }
 
-  // .product__image-wrap {
-  //   height: 100px;
-  // }
+  .counter__button-group {
+    
+    padding: 2px;
+  }
+
+  .counter__btn {
+    width: 26px;
+    height: 30px;
+    line-height: 20px;
+
+    &:hover {
+      background: transparent;
+    }
+  }
+
+  .counter__product {
+    width: 21px;
+    height: 26px;
+    font-size: 24px;
+
+
+  }
+
+
 
 }
 
 @media screen and (max-width: 565px) {
+
+
   .title h2 {
     font-size: 34px;
   }
 
+
+
   .product__container {
     max-width: 600px;
     margin: 0 auto;
-    padding: 0 10px;
+    padding: 0px;
   }
 
   .product__item {
     width: 100%;
-    padding: 15px;
+    padding: 0px;
   }
 
   .product__title a {
