@@ -34,7 +34,6 @@ export class ProductComponent implements OnInit, OnDestroy {
     this.productService.getAllByCategory(categoryName).subscribe(data => {
       this.homeUserProducts = data;
       console.log(data);
-      
     })
   }
 

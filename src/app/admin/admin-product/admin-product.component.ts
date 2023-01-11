@@ -36,8 +36,6 @@ export class AdminProductComponent implements OnInit {
     this.initCategoryForm();
     this.loadDataCategories();
     this.loadDataProducts();
-
-
   }
 
   initCategoryForm(): void {
@@ -67,18 +65,25 @@ export class AdminProductComponent implements OnInit {
   addProduct(): void {
     if (this.editStatus) {
       this.productService.update(this.productForm.value, this.editID).subscribe((data) => {
+        console.log(data);
+
         this.loadDataProducts();
         this.toastr.success('Product Update');
       })
     }
     else {
       this.productService.create(this.productForm.value).subscribe((data) => {
+        console.log(data);
+
         this.loadDataProducts();
         this.toastr.success('Producnt Add');
       })
 
     }
     this.productForm.reset();
+    this.productForm.patchValue({
+      count: 1
+    })
     this.editStatus = false;
     this.isUploaded = false;
     this.uploadPercent = 0;
@@ -94,7 +99,8 @@ export class AdminProductComponent implements OnInit {
       description: product.description,
       weight: product.weight,
       price: product.price,
-      imagePath: product.imagePath
+      imagePath: product.imagePath,
+
     })
     this.editStatus = true;
     this.editID = product.id;
@@ -114,7 +120,6 @@ export class AdminProductComponent implements OnInit {
 
 
   upload(event: any): void {
-    // console.log(event);
     const file = event.target.files[0];
     this.imageService.uploadfile('images', file.name, file)
       .then(data => {
