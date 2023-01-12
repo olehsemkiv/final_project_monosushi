@@ -20,8 +20,6 @@ export class ProductInfoComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
-
     this.activatedRoute.data.subscribe(response => {
       this.currentProduct = response['productInfo'];
     })

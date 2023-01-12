@@ -6,7 +6,12 @@
         [pagination]="{ clickable: true }" [scrollbar]="{ draggable: true }" [autoplay]="true">
         <ng-template swiperSlide>
           <div class="discount-item">
-            <img src="https://monosushi.com.ua/wp-content/uploads/2022/12/den-narodzhennya-.jpg" alt="">
+            <img src="https://monosushi.com.ua/wp-content/uploads/2022/12/5-tyj-v-podarunok-.jpg" alt="">
+          </div>
+        </ng-template>
+        <ng-template swiperSlide>
+          <div class="discount-item">
+            <img src="https://monosushi.com.ua/wp-content/uploads/2022/12/rol-tyzhnya.jpg" alt="">
           </div>
         </ng-template>
         <ng-template swiperSlide>
@@ -16,22 +21,17 @@
         </ng-template>
         <ng-template swiperSlide>
           <div class="discount-item">
-            <img src="https://monosushi.com.ua/wp-content/uploads/2022/12/den-narodzhennya-.jpg" alt="">
+            <img src="https://monosushi.com.ua/wp-content/uploads/2022/12/monokombo.jpg" alt="">
           </div>
         </ng-template>
         <ng-template swiperSlide>
           <div class="discount-item">
-            <img src="https://monosushi.com.ua/wp-content/uploads/2022/12/den-narodzhennya-.jpg" alt="">
+            <img src="https://monosushi.com.ua/wp-content/uploads/2022/12/samovyviz.jpg" alt="">
           </div>
         </ng-template>
         <ng-template swiperSlide>
           <div class="discount-item">
-            <img src="https://monosushi.com.ua/wp-content/uploads/2022/12/den-narodzhennya-.jpg" alt="">
-          </div>
-        </ng-template>
-        <ng-template swiperSlide>
-          <div class="discount-item">
-            <img src="https://monosushi.com.ua/wp-content/uploads/2022/12/den-narodzhennya-.jpg" alt="">
+            <img src="https://monosushi.com.ua/wp-content/uploads/2022/12/fotomarafon-.jpg" alt="">
           </div>
         </ng-template>
       </swiper>
@@ -82,7 +82,7 @@
 
     <div class="categories-menu">
       <ul class="categories-list">
-        <li class="categories-list-item">
+        <li class="categories-list-item active-category">
           <a href="" class="categories-list-link">Всі</a>
         </li>
         <li class="categories-list-item">
@@ -110,16 +110,16 @@
 
 
     <div class="pruduct__wrapper">
-      <div class="product__item" *ngFor="let product of homeUserProducts">
+      <div class="product__item" *ngFor="let product of homeUserProductsRoly">
         <div class="product__border">
           <div class="product__image-wrap">
-            <a href="">
-              <img [src]="product.imagePath" alt="">
+            <a >
+              <img [routerLink]="[ '/product/'+product.category.path, product.id]" [src]="product.imagePath" alt="">
             </a>
           </div>
           <div class="product__title-wrap">
             <div class="product__title">
-              <a href="">{{product.name}}</a>
+              <a [routerLink]="[ '/product/'+product.category.path, product.id]">{{product.name}}</a>
             </div>
           </div>
           <div class="product__desc">
@@ -130,11 +130,11 @@
             <div class="product__price-wrap">
               <div class="product__price"><b class="price">{{product.price}}</b> грн</div>
               <div class="counter__button-group">
-                <button class="counter__btn" type="button">-</button>
-                <input readonly class="counter__product" type="text" value="1">
-                <button class="counter__btn" type="button">+</button>
+                <button class="counter__btn" type="button" (click)="productCount(product, false)">-</button>
+                <input readonly class="counter__product" type="text" [value]="product.count">
+                <button class="counter__btn" type="button" (click)="productCount(product, true)">+</button>
               </div>
-              <button class="btn__order">Замовити</button>
+              <button class="btn__order" (click)="addToBasket(product)">Замовити</button>
             </div>
           </div>
         </div>

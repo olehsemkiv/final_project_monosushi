@@ -25,11 +25,11 @@
               <div class="product__price-wrap">
                 <div class="product__price"><b class="price">{{product.price}}</b> грн</div>
                 <div class="counter__button-group">
-                  <button class="counter__btn" type="button">-</button>
-                  <input readonly class="counter__product" type="text" value="1">
-                  <button class="counter__btn" type="button">+</button>
+                  <button class="counter__btn" type="button" (click)="productCount(product, false)">-</button>
+                  <input readonly class="counter__product" type="text" [value]="product.count">
+                  <button class="counter__btn" type="button" (click)="productCount(product, true)">+</button>
                 </div>
-                <button class="btn__order">Замовити</button>
+                <button class="btn__order" (click)="addToBasket(product)">Замовити</button>
               </div>
             </div>
           </div>

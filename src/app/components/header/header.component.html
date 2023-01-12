@@ -70,12 +70,12 @@
             Працюємо з <b>11:00</b> до <b>22:30</b>
           </div>
         </div>
-        
-          <button class="header__call-btn-nav">
-            <img src="https://monosushi.com.ua/wp-content/uploads/2020/10/phone.svg" alt="" class="header__call-btn-icon">
-            <span>МИ ЗАТЕЛЕФОНУЄМО</span>
-          </button>
-        
+
+        <button class="header__call-btn-nav">
+          <img src="https://monosushi.com.ua/wp-content/uploads/2020/10/phone.svg" alt="" class="header__call-btn-icon">
+          <span>МИ ЗАТЕЛЕФОНУЄМО</span>
+        </button>
+
       </div>
     </div>
     <div class="header__call-back">
@@ -122,12 +122,12 @@
           <p class="cart-product-title">{{product.name}}</p>
           <div class="cart-item-wrapper-nav">
             <div class="counter__button-group">
-              <button class="counter__btn" type="button">-</button>
+              <button (click)="productCount(product, false)" class="counter__btn" type="button">-</button>
               <input readonly class="counter__product" type="text" [value]="product.count">
-              <button class="counter__btn" type="button">+</button>
+              <button (click)="productCount(product, true)" class="counter__btn" type="button">+</button>
             </div>
             <p class="cart-product-price"><b>{{product.price * product.count}}</b>грн</p>
-            <div class="deleteproduct">
+            <div (click)="deleteCartItem(product, $event)" class="deleteproduct">
               X
             </div>
           </div>
@@ -138,7 +138,8 @@
   </div>
   <div class="cart-bottom">
     <div class="cart-price">Сума: <b>{{totalPrice}}</b> грн</div>
-    <button class=" cart-close">ОФОРМИТИ ЗАМОВЛЕННЯ</button>
+    <button [routerLink]="[ '/checkout' ]" class="cart-close" [disabled]="totalPrice <= 0">ОФОРМИТИ ЗАМОВЛЕННЯ</button>
   </div>
 </div>
-<div [ngClass]="{'active-blur ': cartStatus}" class="blur-background" (click)="closeNavCart()"></div>
+<div [ngClass]="{'active-blur ': cartStatus || navMenuStatus}" class="blur-background" (click)="closeNavCart()"
+  (click)="closeNavMenu()"> </div>
