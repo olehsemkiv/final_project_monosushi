@@ -64,6 +64,18 @@
           оплата</a>
         <a class="nav__menu-item" [routerLink]="[ '/about' ]" routerLinkActive="active">Про нас</a>
         <a class="nav__menu-item" [routerLink]="[ '/discount' ]" routerLinkActive="active">Акції</a>
+        <div class="header__info-nav-menu">
+          <a class="header__phone" href="tel:+380681399731">(097) 878 08 37</a>
+          <div class="header__work-time">
+            Працюємо з <b>11:00</b> до <b>22:30</b>
+          </div>
+        </div>
+        
+          <button class="header__call-btn-nav">
+            <img src="https://monosushi.com.ua/wp-content/uploads/2020/10/phone.svg" alt="" class="header__call-btn-icon">
+            <span>МИ ЗАТЕЛЕФОНУЄМО</span>
+          </button>
+        
       </div>
     </div>
     <div class="header__call-back">
@@ -82,7 +94,7 @@
       <img src="https://monosushi.com.ua/wp-content/themes/monosushi/img/user.svg" alt="">
     </div>
     <div class="header__basket" (click)="openNavCart()">
-      <div class="header__basket-wrapper" >
+      <div class="header__basket-wrapper">
         <img src="https://monosushi.com.ua/wp-content/themes/monosushi/img/basket.svg" alt="">
         <span class="header__count-item">{{totalCount}}</span>
         <div class="header__basket-price">
@@ -106,16 +118,21 @@
     <div *ngIf="basket.length" class="cart-product">
       <div class="cart-product-item" *ngFor="let product of basket">
         <a class="cart-product-img"> <img [src]="product.imagePath" alt=""></a>
-        <p class="cart-product-title">{{product.name}}</p>
-        <div class="counter__button-group">
-          <button class="counter__btn" type="button">-</button>
-          <input readonly class="counter__product" type="text" [value]="product.count">
-          <button class="counter__btn" type="button">+</button>
+        <div class="cart-item-wrapper">
+          <p class="cart-product-title">{{product.name}}</p>
+          <div class="cart-item-wrapper-nav">
+            <div class="counter__button-group">
+              <button class="counter__btn" type="button">-</button>
+              <input readonly class="counter__product" type="text" [value]="product.count">
+              <button class="counter__btn" type="button">+</button>
+            </div>
+            <p class="cart-product-price"><b>{{product.price * product.count}}</b>грн</p>
+            <div class="deleteproduct">
+              X
+            </div>
+          </div>
         </div>
-        <p class="cart-product-price"><b>{{product.price * product.count}}</b>грн</p>
-        <div class="deleteproduct">
-          X
-        </div>
+
       </div>
     </div>
   </div>
