@@ -71,7 +71,7 @@
           </div>
         </div>
 
-        <button class="header__call-btn-nav">
+        <button type="button" class="header__call-btn-nav" data-bs-toggle="modal" data-bs-target="#callBackModal">
           <img src="https://monosushi.com.ua/wp-content/uploads/2020/10/phone.svg" alt="" class="header__call-btn-icon">
           <span>МИ ЗАТЕЛЕФОНУЄМО</span>
         </button>
@@ -79,10 +79,13 @@
       </div>
     </div>
     <div class="header__call-back">
-      <button class="header__call-btn">
+      <button type="button" class="header__call-btn" data-bs-toggle="modal" data-bs-target="#callBackModal">
         <img src="https://monosushi.com.ua/wp-content/uploads/2020/10/phone.svg" alt="" class="header__call-btn-icon">
         <span>МИ ЗАТЕЛЕФОНУЄМО</span>
       </button>
+      <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Launch demo modal
+      </button> -->
     </div>
     <div class="header__info">
       <a class="header__phone" href="tel:+380681399731">(097) 878 08 37</a>
@@ -92,6 +95,10 @@
     </div>
     <div class="header__admin" [routerLink]="[ '/admin' ]" routerLinkActive="active">
       <img src="https://monosushi.com.ua/wp-content/themes/monosushi/img/user.svg" alt="">
+    </div>
+    <div class="header__admin">
+      <button type="button" data-bs-toggle="modal" data-bs-target="#loginModal"><img
+          src="https://monosushi.com.ua/wp-content/themes/monosushi/img/user.svg" alt=""></button>
     </div>
     <div class="header__basket" (click)="openNavCart()">
       <div class="header__basket-wrapper">
@@ -143,3 +150,98 @@
 </div>
 <div [ngClass]="{'active-blur ': cartStatus || navMenuStatus}" class="blur-background" (click)="closeNavCart()"
   (click)="closeNavMenu()"> </div>
+
+<!-- Button trigger modal -->
+
+
+<!-- Modal call - back modal-lg -->
+<div class="modal fade" id="callBackModal" tabindex="-1" aria-labelledby="callBackModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered ">
+    <div class="modal-content">
+      <button type="button" class="btn-close modal-btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      <div class="modal-window-header">
+        <h1 class="modal-title">МИ ЗАТЕЛЕФОНУЄМО</h1>
+        <p class="modal-subtitle">Залиште номер телефону і наші менеджери зв’яжуться з вами</p>
+      </div>
+      <div class="modal-window-body">
+        <input class="modal-window-input" type="text" placeholder="Ваше ім'я">
+        <input class="modal-window-input" type="text" placeholder="Ваше номер телефону">
+      </div>
+      <button type="button" class="btn-send" data-bs-dismiss="modal">Надіслати</button>
+
+    </div>
+  </div>
+</div>
+
+<!-- Modal login modal-lg -->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered ">
+    <div class="modal-content">
+      <button type="button" class="btn-close modal-btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      <div class="modal-window-header">
+        <h1 class="modal-title">Вхід в кабінет</h1>
+      </div>
+      <div class="modal-window-body">
+        <input class="modal-window-input" type="text" placeholder="*Ваш email">
+        <input class="modal-window-input" type="text" placeholder="*Пароль">
+      </div>
+      <button type="button" class="btn-send" data-bs-dismiss="modal">УВІЙТИ В КАБІНЕТ</button>
+      <div class="btn-modal-wrapper">
+        <button class="modal-register-btn" type="button" data-bs-toggle="modal" data-bs-target="#forgotPassModal">Забули
+          пароль?</button>
+        <button class="modal-forgot-pass-btn" type="button" data-bs-toggle="modal"
+          data-bs-target="#registerModal">Зареєструватись</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal forgot password  -->
+<div class="modal fade" id="forgotPassModal" tabindex="-1" aria-labelledby="forgotPassModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered ">
+    <div class="modal-content">
+      <button type="button" class="btn-close modal-btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      <div class="modal-window-header">
+        <h1 class="modal-title">Відновити пароль</h1>
+        <p class="modal-subtitle">Після заповнення форми, ми надішлемо вам детальну інструкцію по відновленню паролю</p>
+      </div>
+      <div class="modal-window-body">
+        <input class="modal-window-input" type="text" placeholder="*Ваш email">
+      </div>
+      <button type="button" class="btn-send" data-bs-dismiss="modal">ВІДНОВИТИ ПАРОЛЬ</button>
+      <div class="btn-modal-wrapper"> Повернутися до
+        <button class="modal-register-btn" type="button" data-bs-toggle="modal"
+          data-bs-target="#loginModal">Входу</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal register  -->
+<div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered ">
+    <div class="modal-content">
+      <button type="button" class="btn-close modal-btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      <div class="modal-window-header">
+        <h1 class="modal-title">Зареєструватись</h1>
+      </div>
+      <div class="modal-window-body">
+        <input class="modal-window-input-small modal-window-input" type="text" placeholder="Ваше ім'я">
+        <input class="modal-window-input-small modal-window-input" type="text" placeholder="Ваше прізвище">
+        <input class="modal-window-input" type="text" placeholder="Ваш телефон">
+        <input class="modal-window-input" type="text" placeholder="Ваш email">
+        <input class="modal-window-input-small modal-window-input" type="text" placeholder="Пароль">
+        <input class="modal-window-input-small modal-window-input" type="text" placeholder="Повторіть пароль">
+      </div>
+      <label for="check-privacy">
+        <input class="modal-check-privacy" type="checkbox" name="check-privacy" id="check-privacy"> <span>Я погоджуюсь з
+          <a target="_blank" [routerLink]="[ '/oferta',  ]">Правилами користування</a></span>
+      </label>
+      <button type="button" class="btn-send" data-bs-dismiss="modal">Зареєструватися</button>
+      <div class="btn-modal-wrapper"> Вже зареєстровані?
+        <button class="modal-register-btn" type="button" data-bs-toggle="modal"
+          data-bs-target="#loginModal">Увійти</button>
+      </div>
+    </div>
+  </div>
+</div>
