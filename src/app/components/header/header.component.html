@@ -55,50 +55,52 @@
         </ul>
       </nav>
     </div>
-    <div class="header__burger-menu" (click)="openNavMenu()">
-      <img
-        src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/1024px-Hamburger_icon.svg.png"
-        alt="">
-      <div class="nav__menu" [ngClass]="{'nav__menu-open': navMenuStatus}">
-        <a class="nav__menu-item" [routerLink]="[ '/delivery-and-payment' ]" routerLinkActive="active">Доставка та
-          оплата</a>
-        <a class="nav__menu-item" [routerLink]="[ '/about' ]" routerLinkActive="active">Про нас</a>
-        <a class="nav__menu-item" [routerLink]="[ '/discount' ]" routerLinkActive="active">Акції</a>
-        <div class="header__info-nav-menu">
-          <a class="header__phone" href="tel:+380681399731">(097) 878 08 37</a>
-          <div class="header__work-time">
-            Працюємо з <b>11:00</b> до <b>22:30</b>
+    <div class="wrapper-for-nav">
+      <div class="header__burger-menu" (click)="openNavMenu()">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/1024px-Hamburger_icon.svg.png"
+          alt="">
+        <div class="nav__menu" [ngClass]="{'nav__menu-open': navMenuStatus}">
+          <a class="nav__menu-item" [routerLink]="[ '/delivery-and-payment' ]" routerLinkActive="active">Доставка та
+            оплата</a>
+          <a class="nav__menu-item" [routerLink]="[ '/about' ]" routerLinkActive="active">Про нас</a>
+          <a class="nav__menu-item" [routerLink]="[ '/discount' ]" routerLinkActive="active">Акції</a>
+          <div class="header__info-nav-menu">
+            <a class="header__phone" href="tel:+380681399731">(097) 878 08 37</a>
+            <div class="header__work-time">
+              Працюємо з <b>11:00</b> до <b>22:30</b>
+            </div>
           </div>
+  
+          <button type="button" class="header__call-btn-nav" data-bs-toggle="modal" data-bs-target="#callBackModal">
+            <img src="https://monosushi.com.ua/wp-content/uploads/2020/10/phone.svg" alt="" class="header__call-btn-icon">
+            <span>МИ ЗАТЕЛЕФОНУЄМО</span>
+          </button>
+  
         </div>
-
-        <button type="button" class="header__call-btn-nav" data-bs-toggle="modal" data-bs-target="#callBackModal">
+      </div>
+      <div class="header__call-back">
+        <button type="button" class="header__call-btn" data-bs-toggle="modal" data-bs-target="#callBackModal">
           <img src="https://monosushi.com.ua/wp-content/uploads/2020/10/phone.svg" alt="" class="header__call-btn-icon">
           <span>МИ ЗАТЕЛЕФОНУЄМО</span>
         </button>
-
+        <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          Launch demo modal
+        </button> -->
       </div>
-    </div>
-    <div class="header__call-back">
-      <button type="button" class="header__call-btn" data-bs-toggle="modal" data-bs-target="#callBackModal">
-        <img src="https://monosushi.com.ua/wp-content/uploads/2020/10/phone.svg" alt="" class="header__call-btn-icon">
-        <span>МИ ЗАТЕЛЕФОНУЄМО</span>
-      </button>
-      <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        Launch demo modal
-      </button> -->
-    </div>
-    <div class="header__info">
-      <a class="header__phone" href="tel:+380681399731">(097) 878 08 37</a>
-      <div class="header__work-time">
-        Працюємо з <b>11:00</b> до <b>22:30</b>
+      <div class="header__info">
+        <a class="header__phone" href="tel:+380681399731">(097) 878 08 37</a>
+        <div class="header__work-time">
+          Працюємо з <b>11:00</b> до <b>22:30</b>
+        </div>
       </div>
-    </div>
-    <div class="header__admin" [routerLink]="[ '/admin' ]" routerLinkActive="active">
-      <img src="https://monosushi.com.ua/wp-content/themes/monosushi/img/user.svg" alt="">
-    </div>
-    <div class="header__admin">
-      <button type="button" data-bs-toggle="modal" data-bs-target="#loginModal"><img
-          src="https://monosushi.com.ua/wp-content/themes/monosushi/img/user.svg" alt=""></button>
+      <div class="header__admin" [routerLink]="[ '/admin' ]" routerLinkActive="active">
+        <img src="https://monosushi.com.ua/wp-content/themes/monosushi/img/user.svg" alt="">
+      </div>
+      <div class="header__admin">
+        <button type="button" data-bs-toggle="modal" data-bs-target="#loginModal"><img
+            src="https://monosushi.com.ua/wp-content/themes/monosushi/img/user.svg" alt=""></button>
+      </div>
     </div>
     <div class="header__basket" (click)="openNavCart()">
       <div class="header__basket-wrapper">

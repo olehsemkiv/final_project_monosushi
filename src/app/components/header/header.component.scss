@@ -593,6 +593,12 @@
   visibility: 1;
 }
 
+.wrapper-for-nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
 
 // Modal Window -------------------
 
@@ -741,8 +747,10 @@
     margin-bottom: 15px;
     display: flex;
     justify-content: start;
-    span{
+
+    span {
       color: #5A5A5A;
+
       a {
         text-decoration: none;
         color: #252525;
@@ -755,7 +763,7 @@
   .modal-check-privacy {
     margin-right: 15px;
 
-    
+
   }
 
 
@@ -916,7 +924,9 @@
   .active-cart {
     height: calc(100% - 137px);
   }
-
+  .wrapper-for-nav{
+    flex-direction: row-reverse;
+  }
 
 }
 
