@@ -5,6 +5,7 @@
       <button [routerLink]="[ 'product' ]" routerLinkActive="active" class="nav-link" type="button">Product</button>
       <button [routerLink]="[ 'discount' ]" routerLinkActive="active" class="nav-link" type="button">Discount</button>
       <button [routerLink]="[ 'orders' ]" routerLinkActive="active" class="nav-link" type="button">Orders</button>
+      <button class="btn btn-danger" (click)="logOut()" type="button">Log Out</button>
     </div>
     <div class="tab-content w-100" id="v-pills-tabContent">
       <router-outlet></router-outlet>

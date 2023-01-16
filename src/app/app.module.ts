@@ -36,6 +36,7 @@ import { DrinksComponent } from './pages/drinks/drinks.component';
 import { SousComponent } from './pages/sous/sous.component';
 
 import { ToastrModule } from 'ngx-toastr';
+import { CabinetComponent } from './pages/cabinet/cabinet.component';
 
 
 
@@ -63,7 +64,8 @@ import { ToastrModule } from 'ngx-toastr';
     RoliComponent,
     SetuComponent,
     DrinksComponent,
-    SousComponent
+    SousComponent,
+    CabinetComponent
   ],
   imports: [
     BrowserModule,

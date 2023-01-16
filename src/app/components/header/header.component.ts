@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AccountService } from 'src/app/services/account/account.service';
 import { OrderService } from 'src/app/services/order/order.service';
+import { ROLE } from 'src/app/shared/constants/role.constants';
 import { IProductResponse } from 'src/app/shared/interfaces/products/product.interface';
 
 @Component({
@@ -16,21 +20,84 @@ export class HeaderComponent implements OnInit {
   public totalPrice = 0;
   public totalCount = 0;
 
+  // Form login
+
+  public authForm!: FormGroup;
+  public isLogin = false;
+  public loginUrl = '';
+
+
 
 
   constructor(
-    private orderService: OrderService
+    private orderService: OrderService,
+    private accountService: AccountService,
+    private fb: FormBuilder,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
     this.loadBasket();
     this.updateBasket();
+    this.initAuthForm();
+    this.checkUserLogin();
+    this.checkUpdateUserLogin();
     console.log(this.basket);
+    console.log(this.isLogin);
+
 
   }
 
+  initAuthForm(): void {
+    this.authForm = this.fb.group({
+      email: [null, Validators.required],
+      password: [null, Validators.required],
+    })
+  }
 
+  login(): void {
+    this.accountService.login(this.authForm.value).subscribe(data => {
+      console.log(data);
+      if (data && data.length > 0) {
+        const user = data[0];
+        console.log(user);
+        localStorage.setItem('currentUser', JSON.stringify(user));
+        this.accountService.isUserLogin$.next(true);
+        if (user && user.role === ROLE.USER) {
+          this.router.navigate(['/cabinet']);
+        } else if (user && user.role === ROLE.ADMIN) {
+          this.router.navigate(['/admin']);
+        }
+      }
+    },
+      (e) => {
+        console.log(e);
 
+      })
+      this.authForm.reset();
+  }
+
+  checkUserLogin(): void {
+    const currentUser = JSON.parse(localStorage.getItem('currentUser') as string);
+    if (currentUser && currentUser.role === ROLE.ADMIN) {
+      this.isLogin = true;
+      this.loginUrl = 'admin';
+    } else if (currentUser && currentUser.role === ROLE.USER) {
+      this.isLogin = true;
+      this.loginUrl = 'cabinet';
+    } else {
+      this.isLogin = false;
+      this.loginUrl = '';
+    }
+  }
+
+  checkUpdateUserLogin(): void {
+    this.accountService.isUserLogin$.subscribe(() => {
+      this.checkUserLogin();
+    })
+  }
+
+  // ================basket
   loadBasket(): void {
     if (localStorage.length > 0 && localStorage.getItem('basket')) {
       this.basket = JSON.parse(localStorage.getItem('basket') as string);

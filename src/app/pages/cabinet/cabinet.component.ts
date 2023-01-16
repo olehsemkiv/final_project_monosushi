@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AccountService } from '../services/account/account.service';
+import { AccountService } from 'src/app/services/account/account.service';
+
 
 @Component({
-  selector: 'app-admin',
-  templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.scss']
+  selector: 'app-cabinet',
+  templateUrl: './cabinet.component.html',
+  styleUrls: ['./cabinet.component.scss']
 })
-export class AdminComponent implements OnInit {
+export class CabinetComponent implements OnInit {
 
   constructor(
     private accountService: AccountService,
@@ -15,6 +16,7 @@ export class AdminComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
   }
 
   logOut(): void {
@@ -22,5 +24,4 @@ export class AdminComponent implements OnInit {
     localStorage.removeItem('currentUser');
     this.accountService.isUserLogin$.next(true);
   }
-
 }

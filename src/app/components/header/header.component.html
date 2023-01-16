@@ -71,12 +71,13 @@
               Працюємо з <b>11:00</b> до <b>22:30</b>
             </div>
           </div>
-  
+
           <button type="button" class="header__call-btn-nav" data-bs-toggle="modal" data-bs-target="#callBackModal">
-            <img src="https://monosushi.com.ua/wp-content/uploads/2020/10/phone.svg" alt="" class="header__call-btn-icon">
+            <img src="https://monosushi.com.ua/wp-content/uploads/2020/10/phone.svg" alt=""
+              class="header__call-btn-icon">
             <span>МИ ЗАТЕЛЕФОНУЄМО</span>
           </button>
-  
+
         </div>
       </div>
       <div class="header__call-back">
@@ -94,13 +95,18 @@
           Працюємо з <b>11:00</b> до <b>22:30</b>
         </div>
       </div>
-      <div class="header__admin" [routerLink]="[ '/admin' ]" routerLinkActive="active">
+      <div *ngIf="!isLogin" class="header__admin" [routerLink]="[ '/'+loginUrl ]" routerLinkActive="active"
+        data-bs-toggle="modal" data-bs-target="#loginModal">
         <img src="https://monosushi.com.ua/wp-content/themes/monosushi/img/user.svg" alt="">
       </div>
-      <div class="header__admin">
+      <div *ngIf="isLogin" class="header__admin header__admin-active" [routerLink]="[ '/'+loginUrl ]"
+        routerLinkActive="active">
+        <img src="https://monosushi.com.ua/wp-content/themes/monosushi/img/user.svg" alt="">
+      </div>
+      <!-- <div class="header__admin">
         <button type="button" data-bs-toggle="modal" data-bs-target="#loginModal"><img
             src="https://monosushi.com.ua/wp-content/themes/monosushi/img/user.svg" alt=""></button>
-      </div>
+      </div> -->
     </div>
     <div class="header__basket" (click)="openNavCart()">
       <div class="header__basket-wrapper">
@@ -183,11 +189,15 @@
       <div class="modal-window-header">
         <h1 class="modal-title">Вхід в кабінет</h1>
       </div>
-      <div class="modal-window-body">
-        <input class="modal-window-input" type="text" placeholder="*Ваш email">
-        <input class="modal-window-input" type="text" placeholder="*Пароль">
-      </div>
-      <button type="button" class="btn-send" data-bs-dismiss="modal">УВІЙТИ В КАБІНЕТ</button>
+      <form [formGroup]="authForm" (ngSubmit)="login()">
+        <div class="modal-window-body">
+          <input formControlName="email" name="login" class="modal-window-input" type="text" placeholder="*Ваш email">
+          <input formControlName="password" name="password" class="modal-window-input" type="password"
+            placeholder="*Пароль">
+        </div>
+        <button [disabled]="authForm.invalid" type="submit" class="btn-send" data-bs-dismiss="modal">УВІЙТИ В
+          КАБІНЕТ</button>
+      </form>
       <div class="btn-modal-wrapper">
         <button class="modal-register-btn" type="button" data-bs-toggle="modal" data-bs-target="#forgotPassModal">Забули
           пароль?</button>

@@ -781,6 +781,9 @@
   }
 }
 
+.header__admin-active {
+  background-color: $base-color;
+}
 
 
 @media screen and (max-width: 1500px) {
@@ -924,7 +927,8 @@
   .active-cart {
     height: calc(100% - 137px);
   }
-  .wrapper-for-nav{
+
+  .wrapper-for-nav {
     flex-direction: row-reverse;
   }
 

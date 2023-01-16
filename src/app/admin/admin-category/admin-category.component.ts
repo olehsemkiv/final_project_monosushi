@@ -26,7 +26,6 @@ export class AdminCategoryComponent implements OnInit {
     private fb: FormBuilder,
     private storage: Storage,
     private imageService: ImageService,
-
     private toastr: ToastrService
   ) { }
 
