@@ -8,6 +8,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { provideStorage, getStorage } from '@angular/fire/storage';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import { provideAuth, getAuth } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
 
 
@@ -40,6 +42,14 @@ import { CabinetComponent } from './pages/cabinet/cabinet.component';
 
 
 
+import { AuthDialogComponent } from './components/auth-dialog/auth-dialog.component';
+import { SharedModule } from './shared/shared.module';
+import { AuthAdminComponent } from './components/auth-admin/auth-admin.component';
+import { ModalBasketComponent } from './components/modal-basket/modal-basket.component';
+
+
+
+
 
 
 @NgModule({
@@ -65,7 +75,10 @@ import { CabinetComponent } from './pages/cabinet/cabinet.component';
     SetuComponent,
     DrinksComponent,
     SousComponent,
-    CabinetComponent
+    CabinetComponent,
+    AuthDialogComponent,
+    AuthAdminComponent,
+    ModalBasketComponent
   ],
   imports: [
     BrowserModule,
@@ -76,10 +89,12 @@ import { CabinetComponent } from './pages/cabinet/cabinet.component';
     ReactiveFormsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideStorage(() => getStorage()),
+    provideFirestore(() => getFirestore()),
+    provideAuth(() => getAuth()),
     CommonModule,
-    BrowserAnimationsModule, 
-    ToastrModule.forRoot(), 
-    
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,388 @@
+@import 'variables';
+
+.dialog-back {
+  background-color: rgba(0, 0, 0, 0.644);
+}
+
+.auth-dialog {
+  width: 500px;
+  min-height: 300px;
+}
+
+#loginModal,
+#forgotPassModal,
+#registerModal {
+  .modal-content {
+    // width: 50%;
+    position: relative;
+    // background-color: red;
+    padding: 50px 60px 45px 60px;
+    font-size: 18px;
+    line-height: 1.5em;
+    text-align: center;
+  }
+
+  .modal-btn-close {
+    width: 8px;
+    height: 8px;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+  }
+
+
+  .modal-title {
+    margin-bottom: 5px;
+    color: #252525;
+    font-weight: bold;
+    font-size: 34px;
+    line-height: 1.4em;
+    text-transform: uppercase;
+
+  }
+
+  .modal-subtitle {
+    font-size: 16px;
+    line-height: 1.4em;
+    max-width: 390px;
+    color: #5A5A5A;
+    margin: 0 auto;
+  }
+
+  .modal-window-input:first-child {
+    margin-top: 25px;
+  }
+
+  .modal-window-input {
+    width: 100%;
+    font-size: 16px;
+    height: 56px;
+    border: 1px solid #dcdcdc;
+    border-radius: 10px;
+    color: #252525;
+    line-height: 56px;
+    padding: 0 20px 0 23px;
+    transition: 0.35s;
+    text-overflow: ellipsis;
+    margin-bottom: 15px;
+  }
+
+  .btn-send {
+    text-align: center;
+    transition: .35s;
+    text-transform: uppercase;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: bold;
+    padding: 16px 22px;
+    border-radius: 10px;
+    color: #252525;
+    border: 2px solid #b5d8f7;
+    background: #b5d8f7;
+
+    &:hover {
+      background-color: #fff;
+    }
+  }
+}
+
+#loginModal {
+  .modal-title {
+    text-transform: none;
+    font-size: 26px;
+  }
+
+  .btn-modal-wrapper {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .modal-register-btn,
+  .modal-forgot-pass-btn {
+    font-weight: bold;
+    color: #252525;
+    font-size: 16px;
+    background: transparent;
+    border: none;
+  }
+}
+
+#registerModal {
+
+  .modal-title {
+    text-transform: none;
+    font-size: 26px;
+  }
+
+  .modal-window-input-small:nth-child(1) {
+    margin-right: 10px;
+  }
+
+  .modal-window-input-small:last-child {
+    margin-left: 10px;
+  }
+
+  .modal-window-input-small {
+    width: 48%;
+  }
+
+  label {
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: start;
+
+    span {
+      color: #5A5A5A;
+
+      a {
+        text-decoration: none;
+        color: #252525;
+        font-size: 16px;
+        font-weight: bold;
+      }
+    }
+  }
+
+  .modal-check-privacy {
+    margin-right: 15px;
+
+
+  }
+
+
+  .btn-modal-wrapper {
+    margin-top: 15px;
+    font-weight: normal;
+  }
+
+  .modal-register-btn {
+    font-weight: bold;
+    color: #252525;
+    font-size: 16px;
+    background: transparent;
+    border: none;
+  }
+}
+
+// cart ***********************************************
+
+.cart-back {
+  background-color: rgba(0, 0, 0, 0.39);
+}
+
+.cart {
+  width: 664px;
+  // height: 0;
+  background-color: white;
+  position: fixed;
+  top: 110px;
+  right: 0;
+  border-bottom-left-radius: 9px;
+  border-bottom-right-radius: 9px;
+  z-index: 99;
+  // transition: all .4s;
+  // visibility: 0;
+  // opacity: 0;
+  // overflow-y: hidden;
+}
+
+
+
+.cart-top {
+  padding: 20px;
+}
+
+.cart-empty-message {
+  width: 225px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart-empty-img {
+  margin-bottom: 15px;
+}
+
+.title {
+  margin-bottom: 15px;
+  color: #252525;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 1.75em;
+}
+
+.cart-btn {
+  border: 2px solid $base-color;
+  background: $base-color;
+  text-align: center;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: bold;
+  padding: 16px 22px;
+  border-radius: 10px;
+  color: #252525;
+  text-decoration: none;
+  transition: all .4s;
+
+  &:hover {
+    background-color: #fff;
+  }
+}
+
+.cart-bottom {
+  padding: 20px;
+  background-color: $base-color;
+  background-image: url(https://monosushi.com.ua/wp-content/themes/monosushi/img/bg-monosushi-logo.svg);
+  background-position: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom-left-radius: 9px;
+  border-bottom-right-radius: 9px;
+}
+
+.cart-price {
+  color: #252525;
+  font-size: 18px;
+  line-height: 1.5em;
+}
+
+.cart-close {
+  border: 2px solid $base-color;
+  background: #fff;
+  text-align: center;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: bold;
+  padding: 16px 22px;
+  border-radius: 10px;
+  color: #252525;
+  text-decoration: none;
+}
+
+.cart-close:disabled {
+  background-color: #FC427B;
+}
+
+
+
+
+
+
+.cart-product-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cart-product-img {
+  width: 122px;
+  height: 92px;
+  padding: 10px;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+.cart-product-title {
+  color: #252525;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 1em;
+  width: 200px;
+}
+
+.cart-item-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.cart-item-wrapper-nav {
+  display: flex;
+  align-items: center;
+}
+
+.counter__button-group {}
+
+.counter__btn {}
+
+.counter__product {}
+
+.cart-product-price {
+  width: 75px;
+
+  b {
+    margin: 0 12px;
+    width: 90px;
+  }
+}
+
+.deleteproduct {
+  padding: 5px;
+}
+
+.header__info-nav-menu {
+  display: none;
+}
+
+@media screen and (max-width: 520px) {
+
+  #callBackModal,
+  #loginModal,
+  #forgotPassModal,
+  #registerModal {
+    .modal-content {
+      padding: 25px 20px;
+    }
+
+    .modal-title {
+      font-size: 22px;
+    }
+
+    .btn-send {
+      width: 100%;
+    }
+  }
+}
+
+@media screen and (max-width: 520px) {
+
+  #callBackModal,
+  #loginModal,
+  #forgotPassModal,
+  #registerModal {
+    .modal-content {
+      padding: 15px 9px;
+    }
+
+
+  }
+
+  #loginModal .modal-register-btn,
+  #loginModal .modal-forgot-pass-btn {
+    font-size: 15px;
+  }
+
+  #registerModal {
+    .modal-window-input-small {
+      margin: 0;
+      width: 100%;
+      margin-bottom: 15px;
+    }
+
+    .modal-window-input-small:last-child {
+      margin: 0;
+      margin-bottom: 15px;
+    }
+  }
+}

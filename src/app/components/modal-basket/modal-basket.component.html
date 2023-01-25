@@ -1,0 +1,35 @@
+<div class="cart ">
+    <div class="cart-top">
+      <div *ngIf="!basket.length" class="cart-empty-message">
+        <div class="cart-empty-img">
+          <img src="https://monosushi.com.ua/wp-content/themes/monosushi/img/icons/cart-empty-img.svg" alt="">
+        </div>
+        <div class="title h5">Кошик порожній</div>
+        <a [routerLink]="[ '/product/roly', ]" class="cart-btn">Перейти до каталогу</a>
+      </div>
+      <div *ngIf="basket.length" class="cart-product">
+        <div class="cart-product-item" *ngFor="let product of basket">
+          <a class="cart-product-img"> <img [src]="product.imagePath" alt=""></a>
+          <div class="cart-item-wrapper">
+            <p class="cart-product-title">{{product.name}}</p>
+            <div class="cart-item-wrapper-nav">
+              <div class="counter__button-group">
+                <button (click)="productCount(product, false)" class="counter__btn" type="button">-</button>
+                <input readonly class="counter__product" type="text" [value]="product.count">
+                <button (click)="productCount(product, true)" class="counter__btn" type="button">+</button>
+              </div>
+              <p class="cart-product-price"><b>{{product.price * product.count}}</b>грн</p>
+              <div (click)="deleteCartItem(product, $event)" class="deleteproduct">
+                X
+              </div>
+            </div>
+          </div>
+  
+        </div>
+      </div>
+    </div>
+    <div class="cart-bottom">
+      <div class="cart-price">Сума: <b>{{totalPrice}}</b> грн</div>
+      <button [routerLink]="[ '/checkout' ]" class="cart-close" [disabled]="totalPrice <= 0">ОФОРМИТИ ЗАМОВЛЕННЯ</button>
+    </div>
+  </div>

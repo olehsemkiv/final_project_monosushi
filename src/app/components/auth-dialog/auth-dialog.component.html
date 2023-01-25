@@ -1,0 +1,52 @@
+<div class="modal-dialog modal-dialog-centered" *ngIf="!registerStatus" id="loginModal">
+  <div class="modal-content">
+    <!-- <button type="button" class="btn-close modal-btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+    <div class="modal-window-header">
+      <h1 class="modal-title">Вхід в кабінет</h1>
+    </div>
+    <form [formGroup]="authForm" (ngSubmit)="login()">
+      <div class="modal-window-body">
+        <input formControlName="email" name="login" class="modal-window-input" type="text" placeholder="*Ваш email">
+        <input formControlName="password" name="password" class="modal-window-input" type="password"
+          placeholder="*Пароль">
+      </div>
+      <button mat-dialog-close [disabled]="authForm.invalid" type="submit" class="btn-send"
+        data-bs-dismiss="modal">УВІЙТИ В
+        КАБІНЕТ</button>
+    </form>
+    <div class="btn-modal-wrapper">
+      <button class="modal-register-btn" type="button">Забули
+        пароль?</button>
+      <button class="modal-forgot-pass-btn" type="button" (click)="openRegisterDialog()">Зареєструватись</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-dialog modal-dialog-centered " *ngIf="registerStatus" id="registerModal">
+  <div class="modal-content">
+    <button type="button" class="btn-close modal-btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <div class="modal-window-header">
+      <h1 class="modal-title">Зареєструватись</h1>
+    </div>
+    <form [formGroup]="registrForm" (ngSubmit)="register()">
+      <div class="modal-window-body">
+        <input class="modal-window-input-small modal-window-input" type="text" placeholder="Ваше ім'я">
+        <input class="modal-window-input-small modal-window-input" type="text" placeholder="Ваше прізвище">
+        <input class="modal-window-input" type="text" placeholder="Ваш телефон">
+        <input formControlName="email" name="email" class="modal-window-input" type="text" placeholder="Ваш email">
+        <input formControlName="password" name="password" class="modal-window-input-small modal-window-input"
+          type="text" placeholder="Пароль">
+        <input class="modal-window-input-small modal-window-input" type="text" placeholder="Повторіть пароль">
+      </div>
+      <label for="check-privacy">
+        <input class="modal-check-privacy" type="checkbox" name="check-privacy" id="check-privacy"> <span>Я погоджуюсь
+
+          <a target="_blank" [routerLink]="[ '/oferta',  ]">Правилами користування</a></span>
+      </label>
+      <button type="submit" class="btn-send" data-bs-dismiss="modal" mat-dialog-close>Зареєструватися</button>
+      <div class="btn-modal-wrapper"> Вже зареєстровані?
+        <button class="modal-register-btn" type="button" (click)="openRegisterDialog()">Увійти</button>
+      </div>
+    </form>
+  </div>
+</div>

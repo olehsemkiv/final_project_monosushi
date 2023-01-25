@@ -28,6 +28,7 @@ import { ProductInfoResolver } from './services/product/product-info.resolver';
 import { DiscountInfoResolver } from './services/discount/discount-info.resolver';
 import { AuthGuard } from './shared/guards/auth/auth.guard';
 import { CabinetComponent } from './pages/cabinet/cabinet.component';
+import { AuthAdminComponent } from './components/auth-admin/auth-admin.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -58,6 +59,7 @@ const routes: Routes = [
       { path: '', pathMatch: 'full', redirectTo: 'category' },
     ]
   },
+  { path: 'auth-admin', component: AuthAdminComponent }
 
 
 ];

@@ -1,5 +1,5 @@
 <header class="header">
-  <div class="header__wrapper">
+  <div class="header__wrapper" >
     <a [routerLink]="[ '/home' ]" routerLinkActive="" class="header__logo">
       <img src="https://monosushi.com.ua/wp-content/uploads/2021/06/logo.svg" alt="" class="header__logo-img">
       <img src="https://monosushi.com.ua/wp-content/uploads/2021/08/logo-mobile.svg" alt="" class="mobile__logo">
@@ -95,8 +95,12 @@
           Працюємо з <b>11:00</b> до <b>22:30</b>
         </div>
       </div>
-      <div *ngIf="!isLogin" class="header__admin" [routerLink]="[ '/'+loginUrl ]" routerLinkActive="active"
+      <!-- <div *ngIf="!isLogin" class="header__admin" [routerLink]="[ '/'+loginUrl ]" routerLinkActive="active"
         data-bs-toggle="modal" data-bs-target="#loginModal">
+        <img src="https://monosushi.com.ua/wp-content/themes/monosushi/img/user.svg" alt="">
+      </div> -->
+      <div *ngIf="!isLogin" class="header__admin" [routerLink]="[ '/'+loginUrl ]" routerLinkActive="active"
+        (click)="openLoginDialog()">
         <img src="https://monosushi.com.ua/wp-content/themes/monosushi/img/user.svg" alt="">
       </div>
       <div *ngIf="isLogin" class="header__admin header__admin-active" [routerLink]="[ '/'+loginUrl ]"
@@ -119,6 +123,16 @@
       </div>
 
     </div>
+    <!-- <div class="header__basket" (click)="openCartDialog()">
+      <div class="header__basket-wrapper">
+        <img src="https://monosushi.com.ua/wp-content/themes/monosushi/img/basket.svg" alt="">
+        <span class="header__count-item">{{totalCount}}</span>
+        <div class="header__basket-price">
+          <b>{{totalPrice}}</b>
+          <span>грн</span>
+        </div>
+      </div>
+    </div> -->
   </div>
 </header>
 <div class="cart " [ngClass]="{'active-cart': cartStatus}">
@@ -128,7 +142,7 @@
         <img src="https://monosushi.com.ua/wp-content/themes/monosushi/img/icons/cart-empty-img.svg" alt="">
       </div>
       <div class="title h5">Кошик порожній</div>
-      <a [routerLink]="[ '/product/roly', ]" class="cart-btn">Перейти до каталогу</a>
+      <a [routerLink]="[ '/product/roly', ]" (click)="openNavCart()" class="cart-btn">Перейти до каталогу</a>
     </div>
     <div *ngIf="basket.length" class="cart-product">
       <div class="cart-product-item" *ngFor="let product of basket">
@@ -153,7 +167,7 @@
   </div>
   <div class="cart-bottom">
     <div class="cart-price">Сума: <b>{{totalPrice}}</b> грн</div>
-    <button [routerLink]="[ '/checkout' ]" class="cart-close" [disabled]="totalPrice <= 0">ОФОРМИТИ ЗАМОВЛЕННЯ</button>
+    <button [routerLink]="[ '/checkout' ]" (click)="openNavCart()" class="cart-close" [disabled]="totalPrice <= 0">ОФОРМИТИ ЗАМОВЛЕННЯ</button>
   </div>
 </div>
 <div [ngClass]="{'active-blur ': cartStatus || navMenuStatus}" class="blur-background" (click)="closeNavCart()"
@@ -237,23 +251,27 @@
       <div class="modal-window-header">
         <h1 class="modal-title">Зареєструватись</h1>
       </div>
-      <div class="modal-window-body">
-        <input class="modal-window-input-small modal-window-input" type="text" placeholder="Ваше ім'я">
-        <input class="modal-window-input-small modal-window-input" type="text" placeholder="Ваше прізвище">
-        <input class="modal-window-input" type="text" placeholder="Ваш телефон">
-        <input class="modal-window-input" type="text" placeholder="Ваш email">
-        <input class="modal-window-input-small modal-window-input" type="text" placeholder="Пароль">
-        <input class="modal-window-input-small modal-window-input" type="text" placeholder="Повторіть пароль">
-      </div>
-      <label for="check-privacy">
-        <input class="modal-check-privacy" type="checkbox" name="check-privacy" id="check-privacy"> <span>Я погоджуюсь з
-          <a target="_blank" [routerLink]="[ '/oferta',  ]">Правилами користування</a></span>
-      </label>
-      <button type="button" class="btn-send" data-bs-dismiss="modal">Зареєструватися</button>
-      <div class="btn-modal-wrapper"> Вже зареєстровані?
-        <button class="modal-register-btn" type="button" data-bs-toggle="modal"
-          data-bs-target="#loginModal">Увійти</button>
-      </div>
+      <form [formGroup]="registrForm" (ngSubmit)="register()">
+        <div class="modal-window-body">
+          <input class="modal-window-input-small modal-window-input" type="text" placeholder="Ваше ім'я">
+          <input class="modal-window-input-small modal-window-input" type="text" placeholder="Ваше прізвище">
+          <input class="modal-window-input" type="text" placeholder="Ваш телефон">
+          <input formControlName="email" name="email" class="modal-window-input" type="text" placeholder="Ваш email">
+          <input formControlName="password" name="password" class="modal-window-input-small modal-window-input"
+            type="text" placeholder="Пароль">
+          <input class="modal-window-input-small modal-window-input" type="text" placeholder="Повторіть пароль">
+        </div>
+        <label for="check-privacy">
+          <input class="modal-check-privacy" type="checkbox" name="check-privacy" id="check-privacy"> <span>Я погоджуюсь
+
+            <a target="_blank" [routerLink]="[ '/oferta',  ]">Правилами користування</a></span>
+        </label>
+        <button type="submit" class="btn-send" data-bs-dismiss="modal">Зареєструватися</button>
+        <div class="btn-modal-wrapper"> Вже зареєстровані?
+          <button class="modal-register-btn" type="button" data-bs-toggle="modal"
+            data-bs-target="#loginModal">Увійти</button>
+        </div>
+      </form>
     </div>
   </div>
 </div>
