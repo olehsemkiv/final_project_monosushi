@@ -1,3 +1,4 @@
+import { DialogRef } from '@angular/cdk/dialog';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Auth, createUserWithEmailAndPassword } from '@angular/fire/auth';
 import { doc, docData, Firestore } from '@angular/fire/firestore';
@@ -166,6 +167,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   openCartDialog(): void {
+    this.cartStatus = !this.cartStatus;
     this.dialog.open(ModalBasketComponent, {
       backdropClass: 'cart-back',
       panelClass: 'cart-dialog',
@@ -173,9 +175,14 @@ export class HeaderComponent implements OnInit, OnDestroy {
         top: '110px',
         right: '0px'
       }
+    }).afterClosed().subscribe(() => {
+      this.cartStatus = !this.cartStatus;
     });
 
+
   }
+
+
 
 
   // ================basket

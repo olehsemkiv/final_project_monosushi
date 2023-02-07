@@ -20,8 +20,11 @@
     border-radius: 0;
     font-size: 16px;
     font-weight: bold;
+    min-width: 218px;
   }
-
+  .exit-btn {
+    color: #ff4757
+  }
   #v-pills-tab {
     .active {
       color: #252525;
@@ -36,6 +39,9 @@
     }
   }
 
+  .tab-content {
+    width: 100%;
+  }
 
 
   //   .active::before {
@@ -85,6 +91,10 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    margin-top: 25px;
+  }
+
+  .form-changepass-body {
     margin-top: 25px;
   }
 
@@ -145,7 +155,74 @@
   }
 
   .btn-cabinet-save {}
+
+
+
+
+
+
 }
+
+table {
+  width: 100%;
+}
+
+table,
+th,
+td {
+  // border: 1px solid;
+}
+
+th,
+td {
+  padding: 30px 5px;
+}
+
+
+.order-list {}
+
+.table {
+  color: #5a5a5a;
+
+  // border-spacing: 20px ;
+  b {
+    color: #252525;
+  }
+}
+
+.oreder-list-header {
+  font-size: 16px;
+
+}
+
+.oreder-list-item {
+  position: relative;
+}
+
+.oreder-list-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: $base-color;
+}
+
+.oreder-list-item tr {
+  position: relative;
+}
+
+.oreder-list-item tr:not(:first-child)::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #c5b8b8;
+}
+
 
 
 
@@ -177,6 +254,10 @@
       width: 100%;
     }
 
+    // #v-pills-changepass-tab {
+    //   width: 100%;
+    // }
+
     .modal-window-input-small {
       width: 100%;
     }
@@ -189,7 +270,7 @@
       margin-left: 0px;
     }
 
-    .tab-pane{
+    .tab-pane {
       margin-top: 20px;
     }
   }
@@ -198,7 +279,8 @@
     width: 50%;
   }
 
-  
+
+
 }
 
 

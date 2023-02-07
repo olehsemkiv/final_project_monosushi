@@ -1,5 +1,5 @@
 <header class="header">
-  <div class="header__wrapper" >
+  <div class="header__wrapper">
     <a [routerLink]="[ '/home' ]" routerLinkActive="" class="header__logo">
       <img src="https://monosushi.com.ua/wp-content/uploads/2021/06/logo.svg" alt="" class="header__logo-img">
       <img src="https://monosushi.com.ua/wp-content/uploads/2021/08/logo-mobile.svg" alt="" class="mobile__logo">
@@ -112,18 +112,7 @@
             src="https://monosushi.com.ua/wp-content/themes/monosushi/img/user.svg" alt=""></button>
       </div> -->
     </div>
-    <div class="header__basket" (click)="openNavCart()">
-      <div class="header__basket-wrapper">
-        <img src="https://monosushi.com.ua/wp-content/themes/monosushi/img/basket.svg" alt="">
-        <span class="header__count-item">{{totalCount}}</span>
-        <div class="header__basket-price">
-          <b>{{totalPrice}}</b>
-          <span>грн</span>
-        </div>
-      </div>
-
-    </div>
-    <!-- <div class="header__basket" (click)="openCartDialog()">
+    <!-- <div class="header__basket" (click)="openNavCart()">
       <div class="header__basket-wrapper">
         <img src="https://monosushi.com.ua/wp-content/themes/monosushi/img/basket.svg" alt="">
         <span class="header__count-item">{{totalCount}}</span>
@@ -133,9 +122,19 @@
         </div>
       </div>
     </div> -->
+    <div class="header__basket" (click)="openCartDialog()">
+      <div class="header__basket-wrapper">
+        <img src="https://monosushi.com.ua/wp-content/themes/monosushi/img/basket.svg" alt="">
+        <span class="header__count-item">{{totalCount}}</span>
+        <div class="header__basket-price">
+          <b>{{totalPrice}}</b>
+          <span>грн</span>
+        </div>
+      </div>
+    </div>
   </div>
 </header>
-<div class="cart " [ngClass]="{'active-cart': cartStatus}">
+<!-- <div class="cart " [ngClass]="{'active-cart': cartStatus}">
   <div class="cart-top">
     <div *ngIf="!basket.length" class="cart-empty-message">
       <div class="cart-empty-img">
@@ -167,9 +166,10 @@
   </div>
   <div class="cart-bottom">
     <div class="cart-price">Сума: <b>{{totalPrice}}</b> грн</div>
-    <button [routerLink]="[ '/checkout' ]" (click)="openNavCart()" class="cart-close" [disabled]="totalPrice <= 0">ОФОРМИТИ ЗАМОВЛЕННЯ</button>
+    <button [routerLink]="[ '/checkout' ]" (click)="openNavCart()" class="cart-close"
+      [disabled]="totalPrice <= 0">ОФОРМИТИ ЗАМОВЛЕННЯ</button>
   </div>
-</div>
+</div> -->
 <div [ngClass]="{'active-blur ': cartStatus || navMenuStatus}" class="blur-background" (click)="closeNavCart()"
   (click)="closeNavMenu()"> </div>
 

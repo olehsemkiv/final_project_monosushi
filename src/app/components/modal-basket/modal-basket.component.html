@@ -5,7 +5,7 @@
           <img src="https://monosushi.com.ua/wp-content/themes/monosushi/img/icons/cart-empty-img.svg" alt="">
         </div>
         <div class="title h5">Кошик порожній</div>
-        <a [routerLink]="[ '/product/roly', ]" class="cart-btn">Перейти до каталогу</a>
+        <a [routerLink]="[ '/product/roly', ]" mat-dialog-close class="cart-btn">Перейти до каталогу</a>
       </div>
       <div *ngIf="basket.length" class="cart-product">
         <div class="cart-product-item" *ngFor="let product of basket">
@@ -30,6 +30,6 @@
     </div>
     <div class="cart-bottom">
       <div class="cart-price">Сума: <b>{{totalPrice}}</b> грн</div>
-      <button [routerLink]="[ '/checkout' ]" class="cart-close" [disabled]="totalPrice <= 0">ОФОРМИТИ ЗАМОВЛЕННЯ</button>
+      <button [routerLink]="[ '/checkout' ]" mat-dialog-close class="cart-close" [disabled]="totalPrice <= 0">ОФОРМИТИ ЗАМОВЛЕННЯ</button>
     </div>
   </div>
