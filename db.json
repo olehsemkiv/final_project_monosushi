@@ -169,22 +169,6 @@
       "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-39325.appspot.com/o/images%2Fpepsi.jpg?alt=media&token=be0f2e10-4bd4-4a7d-9d48-ebc91be8dce2",
       "count": 1,
       "id": 7
-    },
-    {
-      "category": {
-        "name": "Соуси",
-        "path": "sous",
-        "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-39325.appspot.com/o/images%2Fsous-category.svg?alt=media&token=ec0c1fca-eb74-4fb9-84a6-138094dc3c63",
-        "id": 4
-      },
-      "name": "Рофлан",
-      "path": "roflan",
-      "description": "Рофлан",
-      "weight": "200",
-      "price": 200,
-      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-39325.appspot.com/o/images%2F%D1%87%D0%B5%D0%B2%D0%BE%D0%BD.jpg?alt=media&token=8e5e9429-1c3e-4a5e-82ef-c34682a6c599",
-      "count": 1,
-      "id": 8
     }
   ],
   "auth": [
