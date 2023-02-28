@@ -30,13 +30,18 @@
     </div>
     <form [formGroup]="registrForm" (ngSubmit)="register()">
       <div class="modal-window-body">
-        <input class="modal-window-input-small modal-window-input" type="text" placeholder="Ваше ім'я">
-        <input class="modal-window-input-small modal-window-input" type="text" placeholder="Ваше прізвище">
-        <input class="modal-window-input" type="text" placeholder="Ваш телефон">
+        <input formControlName="firstName" class="modal-window-input-small modal-window-input" type="text"
+          placeholder="Ваше ім'я">
+        <input formControlName="lastName" class="modal-window-input-small modal-window-input" type="text"
+          placeholder="Ваше прізвище">
+        <input formControlName="phoneNumber" class="modal-window-input" type="text" placeholder="Ваш телефон">
         <input formControlName="email" name="email" class="modal-window-input" type="text" placeholder="Ваш email">
-        <input formControlName="password" name="password" class="modal-window-input-small modal-window-input"
-          type="text" placeholder="Пароль">
-        <input class="modal-window-input-small modal-window-input" type="text" placeholder="Повторіть пароль">
+        <input (input)="checkConfirmedPassword()" formControlName="password" name="password"
+          class="modal-window-input-small modal-window-input" type="password" placeholder="Пароль">
+        <input (input)="checkConfirmedPassword()" formControlName="confirmedPassword"
+          class="modal-window-input-small modal-window-input" type="password" placeholder="Повторіть пароль">
+        <p class="confirmedErrorAlert" *ngIf="checkVisibilityError('confirmedPassword', 'matchError')">*Паролі не
+          співпадають</p>
       </div>
       <label for="check-privacy">
         <input class="modal-check-privacy" type="checkbox" name="check-privacy" id="check-privacy"> <span>Я погоджуюсь

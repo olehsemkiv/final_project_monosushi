@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Auth, createUserWithEmailAndPassword } from '@angular/fire/auth';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
@@ -9,6 +9,15 @@ import { OrderService } from 'src/app/services/order/order.service';
 import { doc, docData, Firestore, setDoc } from '@angular/fire/firestore';
 import { signInWithEmailAndPassword, UserCredential } from '@firebase/auth';
 import { ROLE } from 'src/app/shared/constants/role.constants';
+
+export interface IRegister {
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+  phoneNumber: string;
+  confirmedPassword?: string;
+}
 
 
 @Component({
@@ -21,10 +30,13 @@ export class AuthDialogComponent implements OnInit {
   public authForm!: FormGroup;
   public registrForm!: FormGroup;
   public isLogin = false;
+  public checkPassword = false;
   public loginUrl = '';
   public registerStatus = false;
   // ************************************
   public loginSubscription!: Subscription;
+
+  private registerData!: IRegister;
 
 
   constructor(
@@ -54,6 +66,10 @@ export class AuthDialogComponent implements OnInit {
     this.registrForm = this.fb.group({
       email: [null, Validators.required],
       password: [null, Validators.required],
+      firstName: [null, Validators.required],
+      lastName: [null, Validators.required],
+      phoneNumber: [null, Validators.required],
+      confirmedPassword: [null, Validators.required]
     })
   }
 
@@ -91,6 +107,7 @@ export class AuthDialogComponent implements OnInit {
   register(): void {
     console.log(this.registrForm.value);
     const { email, password } = this.registrForm.value;
+    this.registerData = this.registrForm.value;
     this.emailSignUp(email, password).then(() => {
       this.toastr.success('User Registr');
     }).catch(e => {
@@ -103,9 +120,9 @@ export class AuthDialogComponent implements OnInit {
     const credential = await createUserWithEmailAndPassword(this.auth, email, password);
     const user = {
       email: credential.user.email,
-      firstName: '',
-      lastName: '',
-      phoneNumber: '',
+      firstName: this.registerData.firstName,
+      lastName: this.registerData.lastName,
+      phoneNumber: this.registerData.phoneNumber,
       address: '',
       orders: [],
       role: 'USER',
@@ -136,6 +153,26 @@ export class AuthDialogComponent implements OnInit {
 
   openRegisterDialog(): void {
     this.registerStatus = !this.registerStatus;
+  }
+
+  checkConfirmedPassword(): void {
+    this.checkPassword = this.password.value === this.confirmed.value;
+    if (this.password.value !== this.confirmed.value) {
+      this.registrForm.controls['confirmedPassword'].setErrors({
+        matchError: 'Password confirmation doesnt match'
+      })
+    }
+  }
+
+  get password(): AbstractControl {
+    return this.registrForm.controls['password'];
+  }
+  get confirmed(): AbstractControl {
+    return this.registrForm.controls['confirmedPassword'];
+  }
+
+  checkVisibilityError(control: string, name: string): boolean | null {
+    return this.registrForm.controls[control].errors?.[name];
   }
 
 }

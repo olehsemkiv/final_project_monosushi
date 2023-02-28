@@ -9,7 +9,6 @@ const MATERIAL = [
 // other module
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
 
 // Swiper
 
@@ -21,14 +20,12 @@ import { SwiperModule } from 'swiper/angular';
         ...MATERIAL,
       FormsModule,
       ReactiveFormsModule,
-      HttpClientModule,
       SwiperModule
     ],
     exports: [
         ...MATERIAL,
       FormsModule,
       ReactiveFormsModule,
-      HttpClientModule,
       SwiperModule
     ]
 })

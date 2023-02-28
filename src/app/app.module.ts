@@ -24,6 +24,8 @@ import { AuthDialogComponent } from './components/auth-dialog/auth-dialog.compon
 import { SharedModule } from './shared/shared.module';
 import { ModalBasketComponent } from './components/modal-basket/modal-basket.component';
 
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 
@@ -47,7 +49,8 @@ import { ModalBasketComponent } from './components/modal-basket/modal-basket.com
     CommonModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    SharedModule
+    SharedModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

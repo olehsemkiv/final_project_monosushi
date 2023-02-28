@@ -19,12 +19,12 @@
                 <button (click)="productCount(product, true)" class="counter__btn" type="button">+</button>
               </div>
               <p class="cart-product-price"><b>{{product.price * product.count}}</b>грн</p>
-              <div (click)="deleteCartItem(product, $event)" class="deleteproduct">
+              <div (click)="deleteCartItem(product)" class="deleteproduct">
                 X
               </div>
             </div>
           </div>
-  
+
         </div>
       </div>
     </div>

@@ -54,7 +54,7 @@ export class ModalBasketComponent implements OnInit {
     this.orderService.changeBasket.next(true);
   }
 
-  deleteCartItem(product: IProductResponse, event: EventInit): void {
+  deleteCartItem(product: IProductResponse): void {
     if (this.basket.some(prod => prod.id === product.id)) {
       const index = this.basket.findIndex(prod => prod.id === product.id);
       this.basket.splice(index, 1);

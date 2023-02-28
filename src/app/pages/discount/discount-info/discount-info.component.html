@@ -9,17 +9,17 @@
         <a [routerLink]="[ '/discount' ]" routerLinkActive="active">Акції</a>
       </li>
       <li>
-        <a>{{currentDiscount.title}}</a>
+        <a>{{currentDiscount?.title}}</a>
       </li>
     </ul>
     <div class="discount-info__content">
       <div class="discount-info__banner">
 
-        <h2>{{currentDiscount.title}}</h2>
+        <h2>{{currentDiscount?.title}}</h2>
 
       </div>
       <div class="discount-info__content-list">
-        <ul [innerHTML]="currentDiscount.description">
+        <ul [innerHTML]="currentDiscount?.description">
           <!-- <li>Щотижня діє знижка 50% на один з ролів у нашому меню.</li>
           <li>“Рол тижня” ви можете знайти на головній сторінці нашого сайту.</li>
           <li>Знижка діє при мінімальній сумі замовлення 300 грн.</li>

@@ -27,7 +27,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   public navMenuStatus = false;
   public cartStatus = false;
 
-  public basket: Array<IProductResponse> = [];
+  public basket: IProductResponse[] = [];
   public totalPrice = 0;
   public totalCount = 0;
 
@@ -64,7 +64,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.checkUpdateUserLogin();
   }
   ngOnDestroy(): void {
-    this.loginSubscription.unsubscribe()
+    // this.loginSubscription.unsubscribe()
+    if(this.loginSubscription){this.loginSubscription.unsubscribe()}
   }
 
   initAuthForm(): void {
@@ -221,7 +222,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.orderService.changeBasket.next(true);
   }
 
-  deleteCartItem(product: IProductResponse, event: EventInit): void {
+  deleteCartItem(product: IProductResponse): void {
     if (this.basket.some(prod => prod.id === product.id)) {
       const index = this.basket.findIndex(prod => prod.id === product.id);
       this.basket.splice(index, 1);
