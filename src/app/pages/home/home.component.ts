@@ -48,8 +48,8 @@ export class HomeComponent implements OnInit {
   }
 
   loadUserProducts(): void {
-    this.productService.getAll().subscribe(data => {
-      this.homeUserProducts = data;
+    this.productService.getAllFirebase().subscribe(data => {
+      this.homeUserProducts = data as IProductResponse[];
       for (const product of this.homeUserProducts) {
         if (product.category.path == 'roly' || product.category.path == 'sety') {
           this.homeUserProductsRoly.push(product);

@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { OrderService } from 'src/app/services/order/order.service';
@@ -11,10 +11,12 @@ import { IProductResponse } from 'src/app/shared/interfaces/products/product.int
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.scss']
 })
-export class ProductComponent implements OnInit, OnDestroy {
+export class ProductComponent implements OnInit {
 
   public homeUserProducts: Array<IProductResponse> = [];
   private eventSubscription!: Subscription;
+
+  public categoryProductName!: string;
 
   constructor(
     private productService: ProductService,
@@ -30,14 +32,32 @@ export class ProductComponent implements OnInit, OnDestroy {
   }
 
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+
+  }
 
   loadUserProducts(): void {
     const categoryName = this.activatedRoute.snapshot.paramMap.get('category') as string;
-    this.productService.getAllByCategory(categoryName).subscribe(data => {
-      this.homeUserProducts = data;
-      console.log(data);
+    this.productService.getAllFirebase().subscribe(data => {
+      let categoryProducts = data.filter(item => item['category']['path'] == categoryName);
+      this.homeUserProducts = categoryProducts as IProductResponse[];
     })
+
+
+    if (categoryName == 'roly'){
+      this.categoryProductName = 'Роли'
+    }
+    else if (categoryName == 'sety'){
+      this.categoryProductName = 'Сети'
+    }
+    else if (categoryName == 'drinks'){
+      this.categoryProductName = 'Напої'
+    }
+    else if (categoryName == 'sous'){
+      this.categoryProductName = 'Соуси'
+    }
+
+
   }
 
   productCount(product: IProductResponse, value: boolean): void {
@@ -66,7 +86,7 @@ export class ProductComponent implements OnInit, OnDestroy {
     this.orderService.changeBasket.next(true);
   }
 
-  ngOnDestroy(): void {
-    this.eventSubscription.unsubscribe();
-  }
+  // ngOnDestroy(): void {
+  //   this.eventSubscription.unsubscribe();
+  // }
 }

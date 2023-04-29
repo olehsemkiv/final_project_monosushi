@@ -128,7 +128,6 @@ export class AuthDialogComponent implements OnInit {
       role: 'USER',
     }
     setDoc(doc(this.afs, 'users', credential.user.uid), user);
-
   }
 
   checkUserLogin(): void {

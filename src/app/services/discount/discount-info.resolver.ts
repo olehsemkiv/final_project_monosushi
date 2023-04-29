@@ -15,9 +15,20 @@ import { DiscountServiceService } from '../discount-service.service';
 
 export class DiscountInfoResolver implements Resolve<discountElementResponse> {
 
-  constructor(private discountService: DiscountServiceService) { }
-  
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<discountElementResponse> {
-    return this.discountService.getOne(Number(route.paramMap.get('id')));
+
+
+
+  constructor(
+    private discountService: DiscountServiceService
+
+  ) {
+
+
   }
+
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): any{
+    return this.discountService.getOneFirebase(route.paramMap.get('id') as string);
+  }
+
+
 }

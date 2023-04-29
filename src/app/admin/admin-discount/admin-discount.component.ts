@@ -19,7 +19,7 @@ export class AdminDiscountComponent implements OnInit {
   public discountAdmin: Array<discountElementResponse> = [];
 
   public editStatus = false;
-  public editID!: number;
+  public editID!: number | string;
   public uploadPercent!: number;
   public isUploaded = false;
   public discountForm!: FormGroup;
@@ -49,22 +49,32 @@ export class AdminDiscountComponent implements OnInit {
   }
 
   getData(): void {
-    this.discountService.getAll().subscribe(data => {
-      this.discountAdmin = data;
+    // this.discountService.getAll().subscribe(data => {
+    //   this.discountAdmin = data;
+    // })
+    this.discountService.getAllFirebase().subscribe(data => {
+      this.discountAdmin = data as discountElementResponse[];
     })
   }
 
   addItem(): void {
     if (this.editStatus) {
-      this.discountService.update(this.discountForm.value, this.editID).subscribe(() => {
+      // this.discountService.update(this.discountForm.value, this.editID).subscribe(() => {
+      //   this.getData();
+      //   this.toastr.success('Product Update');
+      // })
+      this.discountService.updateFirebase(this.discountForm.value, this.editID as string).then(() => {
         this.getData();
-        this.toastr.success('Product Update');
+        this.toastr.success('Discount Update');
       })
     } else {
-      this.discountService.create(this.discountForm.value).subscribe((data) => {
+      // this.discountService.create(this.discountForm.value).subscribe((data) => {
+      //   this.getData();
+      //   this.toastr.success('Product Add');
+      // })
+      this.discountService.createFirebase(this.discountForm.value).then((data) => {
         this.getData();
-        this.toastr.success('Product Add');
-
+        this.toastr.success('Discount Add');
       })
     }
     this.discountForm.reset();
@@ -74,10 +84,16 @@ export class AdminDiscountComponent implements OnInit {
   }
 
   deleteItem(discount: discountElementResponse): void {
+    // if (confirm("rly delete ?")) {
+    //   this.discountService.delete(discount.id).subscribe(() => {
+    //     this.getData();
+    //     this.toastr.success('Discount Delete');
+    //   })
+    // }
     if (confirm("rly delete ?")) {
-      this.discountService.delete(discount.id).subscribe(() => {
+      this.discountService.deleteFirebase(discount.id).then(() => {
         this.getData();
-        this.toastr.success('Product Delete');
+        this.toastr.success('Discount Delete');
       })
     }
   }

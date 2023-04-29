@@ -16,7 +16,7 @@ export class AdminCategoryComponent implements OnInit {
 
   public categoriesAdmin: Array<IcategoryElementResponse> = [];
   public editStatus = false;
-  public editID!: number;
+  public editID!: number | string;
   public uploadPercent!: number;
   public isUploaded = false;
 
@@ -44,22 +44,33 @@ export class AdminCategoryComponent implements OnInit {
   }
 
   getData(): void {
-    this.categoriesService.getAll().subscribe(data => {
-      this.categoriesAdmin = data;
+    // this.categoriesService.getAll().subscribe(data => {
+    //   this.categoriesAdmin = data;
+    // })
+    this.categoriesService.getAllFirebase().subscribe(data => {
+      this.categoriesAdmin = data as IcategoryElementResponse[];
     })
   }
 
   addItem(): void {
 
     if (this.editStatus) {
-      this.categoriesService.update(this.categoryForm.value, this.editID).subscribe(() => {
+      // this.categoriesService.update(this.categoryForm.value, this.editID).subscribe(() => {
+      //   this.getData();
+      //   this.toastr.success('Product Update');
+      // })
+      this.categoriesService.updateFirebase(this.categoryForm.value, this.editID as string).then(() => {
         this.getData();
-        this.toastr.success('Product Update');
+        this.toastr.success('Category Update');
       })
     } else {
-      this.categoriesService.create(this.categoryForm.value).subscribe(() => {
-        this.getData();
-        this.toastr.success('Product Add');
+      // this.categoriesService.create(this.categoryForm.value).subscribe(() => {
+      //   this.getData();
+      //   this.toastr.success('Product Add');
+      // })
+      this.categoriesService.createFirebase(this.categoryForm.value).then(() => {
+        // this.getData();
+        this.toastr.success('Category Add');
       })
     }
     this.categoryForm.reset();
@@ -75,18 +86,29 @@ export class AdminCategoryComponent implements OnInit {
       imagePath: category.imagePath,
     })
     this.editStatus = true;
-    this.editID = category.id;
+    this.editID = category.id as number;
     this.isUploaded = true;
+    // this.categoriesService.getOneFirebase(category.id as string).subscribe(data => {
+    //   console.log(data)
+    // })
   }
 
   deleteItem(category: IcategoryElementResponse): void {
+    // if (confirm("rly delete ?")) {
+    //   this.categoriesService.delete(category.id as number).subscribe(() => {
+    //     this.getData();
+    //     this.toastr.success('Product Delete');
+    //   })
+    // }
     if (confirm("rly delete ?")) {
-      this.categoriesService.delete(category.id).subscribe(() => {
+      this.categoriesService.deleteFirebase(category.id as number).then(() => {
         this.getData();
-        this.toastr.success('Product Delete');
+        this.toastr.success('Category Delete');
       })
     }
   }
+
+
 
   upload(event: any): void {
     // console.log(event);

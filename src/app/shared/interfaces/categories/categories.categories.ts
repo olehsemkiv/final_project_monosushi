@@ -5,5 +5,5 @@ export interface IcategoryElementRequest {
 }
 
 export interface IcategoryElementResponse extends IcategoryElementRequest {
-    id: number;
+    id: number | string;
 }

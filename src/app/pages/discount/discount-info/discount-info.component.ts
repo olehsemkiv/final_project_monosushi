@@ -22,5 +22,7 @@ export class DiscountInfoComponent implements OnInit {
       this.currentDiscount = resolve['discountInfo'];
     })
   }
-  
+
+
+
 }

@@ -15,7 +15,7 @@ export class ProductInfoResolver implements Resolve<IProductResponse> {
 
   constructor(private productService: ProductService) { }
 
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<IProductResponse> {
-    return this.productService.getOne(Number(route.paramMap.get('id')));
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): any {
+    return this.productService.getOneFirebase(route.paramMap.get('id') as string);
   }
 }

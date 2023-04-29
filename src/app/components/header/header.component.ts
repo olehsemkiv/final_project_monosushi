@@ -65,7 +65,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
   ngOnDestroy(): void {
     // this.loginSubscription.unsubscribe()
-    if(this.loginSubscription){this.loginSubscription.unsubscribe()}
+    if (this.loginSubscription) { this.loginSubscription.unsubscribe() }
   }
 
   initAuthForm(): void {
@@ -135,7 +135,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
       role: 'USER',
     }
     setDoc(doc(this.afs, 'users', credential.user.uid), user);
-
   }
 
   checkUserLogin(): void {

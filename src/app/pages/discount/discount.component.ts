@@ -17,9 +17,19 @@ export class DiscountComponent implements OnInit {
   }
 
   getDataUser(): void {
-    this.discountService.getAll().subscribe(data => {
-      this.discountUser = data;
+    // this.discountService.getAll().subscribe(data => {
+    //   this.discountUser = data;
+    // })
+    this.discountService.getAllFirebase().subscribe(data => {
+      this.discountUser = data as discountElementResponse[];
+      // console.log(data)
     })
   }
+
+// rofl(discount: any): void {
+//   this.discountService.getOneFirebase(discount.id).subscribe(data => {
+//     console.log(data)
+//   })
+// }
 
 }
